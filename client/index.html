@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Giới thiệu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/colors.css">
+    <link rel="stylesheet" href="styles/components/introduct.css">
+</head>
+<body>
+
+    <!-- Header với điều hướng -->
+    <header class="intro-header">
+        <div class="brand">Task Flow</div>
+        <nav aria-label="Điều hướng trang giới thiệu">
+            <a href="index.html">Trang chủ</a>
+            <a href="#how-to-use">Cách dùng</a>
+            <a href="#contact">Liên hệ</a>
+            <a href="login.html" class="btn btn-secondary">Đăng nhập</a>
+        </nav>
+    </header>
+
+    <!-- Phần giới thiệu chính -->
+    <main class="intro-container">
+        <section class="hero-intro">
+            <div class="hero-content">
+                <div>
+                    <p style="text-transform: uppercase; letter-spacing: 0.22em; color: var(--primary); font-weight: 700; margin-bottom: 18px;">Giới thiệu sản phẩm</p>
+                    <h1>Todo App tối giản dành cho những người cần tập trung vào kết quả.</h1>
+                    <p>Task Flow giúp bạn quản lý công việc theo cách trực quan, giảm thiểu tiếng ồn và chuyển ý tưởng thành hành động nhanh chóng.</p>
+                    <div class="hero-actions">
+                        <a href="login.html" class="btn btn-primary">Bắt đầu ngay</a>
+                        <a href="#how-to-use" class="btn btn-secondary">Xem cách hoạt động</a>
+                    </div>
+                </div>
+
+                <div class="hero-highlights">
+                    <div class="hero-card">
+                        <span><i class="fas fa-bolt"></i></span>
+                        <h3>Khởi động nhanh</h3>
+                        <p>Chỉ với vài bước, bạn đã có thể tạo và tổ chức nhiệm vụ ngay lập tức.</p>
+                    </div>
+                    <div class="hero-card">
+                        <span><i class="fas fa-brain"></i></span>
+                        <h3>Thiết kế tập trung</h3>
+                        <p>Giao diện sạch, loại bỏ các yếu tố gây nhiễu để bạn chỉ tập trung vào công việc.</p>
+                    </div>
+                    <div class="hero-card">
+                        <span><i class="fas fa-cloud-upload-alt"></i></span>
+                        <h3>Lưu ý tưởng an toàn</h3>
+                        <p>Dữ liệu thử nghiệm lưu cục bộ và chuyển sang tài khoản khi bạn sẵn sàng đăng ký.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phần hướng dẫn cách sử dụng -->
+        <section id="how-to-use" class="section-padding">
+            <div class="section-heading">
+                <h2>Cách thức hoạt động</h2>
+                <p>Task Flow được thiết kế để bạn có thể bắt đầu nhanh, ổn định công việc và lưu trữ dữ liệu an toàn khi chuyển sang phiên bản đăng nhập.</p>
+            </div>
+
+            <div class="steps-grid">
+                <article class="step-card">
+                    <div class="step-number">01</div>
+                    <i class="fas fa-mouse-pointer"></i>
+                    <h3>Dùng thử ngay lập tức</h3>
+                    <p>Truy cập dashboard, thêm nhiệm vụ mới và bắt đầu theo dõi tiến độ mà không cần cấu hình phức tạp.</p>
+                </article>
+                <article class="step-card">
+                    <div class="step-number">02</div>
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Đăng ký tài khoản</h3>
+                    <p>Khi bạn thấy ổn, tạo tài khoản để bảo mật dữ liệu và đồng bộ công việc trên nhiều thiết bị.</p>
+                </article>
+                <article class="step-card">
+                    <div class="step-number">03</div>
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Chuyển dữ liệu thông minh</h3>
+                    <p>Tất cả nhiệm vụ thử nghiệm sẽ được chuyển lên tài khoản mới, giữ nguyên tiến độ hiện tại của bạn.</p>
+                </article>
+            </div>
+        </section>
+
+
+        <!-- Phần liên hệ -->
+        <section id="contact" class="section-padding">
+            <div class="contact-wrap">
+                <div class="contact-info">
+                    <h2>Hỗ trợ nhanh chóng</h2>
+                    <p>Nếu bạn muốn góp ý, hợp tác hoặc cần trợ giúp, mình luôn sẵn sàng lắng nghe và phản hồi nhanh nhất có thể.</p>
+                    <div class="contact-meta">
+                        <p><i class="fas fa-envelope"></i> vuongngo.dev@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Trường Đại học Công nghệ Sài Gòn</p>
+                        <p><i class="fab fa-github"></i> github.com/vuongngo-dev</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div>
+                            <label for="name">Họ tên</label>
+                            <input id="name" type="text" placeholder="Nhập tên của bạn..." required>
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input id="email" type="email" placeholder="example@gmail.com" required>
+                        </div>
+                        <div>
+                            <label for="message">Nội dung</label>
+                            <textarea id="message" rows="5" placeholder="Bạn đang nghĩ gì?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Ngô Đức Vương - Dự án IT Portfolio</p>
+        </footer>
+    </main>
+</body>
+</html>
