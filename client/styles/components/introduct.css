@@ -5,7 +5,7 @@ DESCRIPTION: Styles cho trang giới thiệu.
 ==========================================================================
 */
 
-/* 1. Reset & General */
+/* Khối chứa */
 body {
     margin: 0;
     padding: 0;
@@ -17,7 +17,7 @@ body {
     transition: var(--transition-normal);
 }
 
-/* 2. Header & Navigation */
+/* Thanh điều hướng */
 .intro-header {
     display: flex;
     justify-content: space-between;
@@ -50,7 +50,7 @@ nav a:hover {
     color: var(--primary);
 }
 
-/* 3. Button Components (Dùng chung) */
+/* Khung chứa các nút */
 .btn {
     padding: 12px 24px;
     border-radius: var(--radius-md);
@@ -115,7 +115,7 @@ nav a:hover {
     margin-bottom: 60px;
 }
 
-/* Hero Highlights Cards */
+/* Khung chứa các điểm nổi bật */
 .hero-highlights {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -142,7 +142,7 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-/* 5. How to use (Steps Grid) */
+/* Khối chứa các bước */
 .section-padding {
     padding: 100px 0;
 }
@@ -188,7 +188,7 @@ nav a:hover {
     position: relative;
 }
 
-/* 6. Contact Section */
+/* Khối liên hệ */
 .contact-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -226,7 +226,7 @@ nav a:hover {
     color: var(--text-main);
 }
 
-/* 7. Footer */
+/* Khung chân trang */
 .footer {
     text-align: center;
     padding: 40px 0;
@@ -235,7 +235,7 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
-/* 8. RESPONSIVE (Dành cho Mobile) */
+/* Khung chứa đáp ứng cho Mobile */
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 2rem; }
     .intro-header { padding: 15px 5%; }
