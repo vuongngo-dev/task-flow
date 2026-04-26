@@ -1,0 +1,244 @@
+/*
+==========================================================================
+FILE: introduct.css
+DESCRIPTION: Styles cho trang giới thiệu.
+==========================================================================
+*/
+
+/* 1. Reset & General */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: var(--transition-normal);
+}
+
+/* 2. Header & Navigation */
+.intro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* 3. Button Components (Dùng chung) */
+.btn {
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: var(--transition-normal);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--text-on-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border-hover);
+}
+
+/* 4. Hero Section */
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-intro {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.hero-content > div > p:last-of-type {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+/* Hero Highlights Cards */
+.hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.hero-card {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-normal);
+}
+
+.hero-card:hover {
+    transform: translateY(-10px);
+}
+
+.hero-card span i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+/* 5. How to use (Steps Grid) */
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-heading h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.step-card {
+    position: relative;
+    padding: 40px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+}
+
+.step-number {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--primary-light);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.step-card i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* 6. Contact Section */
+.contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    background: var(--bg-card);
+    padding: 50px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.contact-meta p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-form div {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-input);
+    color: var(--text-main);
+}
+
+/* 7. Footer */
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* 8. RESPONSIVE (Dành cho Mobile) */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2rem; }
+    .intro-header { padding: 15px 5%; }
+    nav a:not(.btn) { display: none; } /* Ẩn bớt link trên mobile */
+    .contact-wrap { grid-template-columns: 1fr; padding: 30px; }
+}

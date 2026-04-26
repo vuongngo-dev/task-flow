@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Đăng nhập</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/login.css">
+</head>
+<body>
+    <div class="login-card">
+        <!-- Biểu tượng và lời chào -->
+        <i class="fas fa-check-circle" style="font-size: 50px; color: var(--primary-color); margin-bottom: 15px;"></i>
+        <h2>Chào mừng trở lại</h2>
+        <p>Đăng nhập để đồng bộ các tác vụ của bạn</p>
+
+        <!-- Form đăng nhập -->
+        <form action="" method="POST">
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="username" placeholder="Tên đăng nhập">
+        </div>
+
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="Mật khẩu">
+        </div>
+
+        <button class="login-btn" onclick="">Đăng nhập</button>
+
+        <div class="footer-links">
+            Chưa có tài khoản? <a href="#">Đăng ký ngay</a>
+        </div>
+
+        <span class="divider">hoặc</span>
+
+        <!-- Liên kết tiếp tục dùng thử -->
+        <a href="dashboard.html" class="guest-mode"> tiếp tục dùng thử (Khách)</a>
+        </form>
+    </div>
+</body>
+</html>
