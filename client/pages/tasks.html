@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Công việc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/tasks.css">
+</head>
+<body>
+    <div class="page-container">
+        <header class="page-header">
+            <div>
+                <h1>Quản lý công việc</h1>
+                <p class="text-muted">Bạn có 3 công việc cần hoàn thành hôm nay.</p>
+            </div>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Thêm công việc
+            </button>
+        </header>
+
+        <div class="tasks-toolbar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm công việc...">
+            </div>
+            
+            <div class="toolbar-actions">
+                <select class="form-select">
+                    <option value="all">Tất cả trạng thái</option>
+                    <option value="todo">Chưa bắt đầu</option>
+                    <option value="in-progress">Đang làm</option>
+                    <option value="done">Hoàn thành</option>
+                </select>
+
+                <select class="form-select">
+                    <option value="all">Mọi độ ưu tiên</option>
+                    <option value="high">🔥 Ưu tiên Cao</option>
+                    <option value="medium">⚡ Trung bình</option>
+                </select>
+
+                <select class="form-select">
+                    <option value="newest">Mới nhất</option>
+                    <option value="oldest">Cũ nhất</option>
+                </select>
+
+                <div class="view-toggles">
+                    <button class="view-btn active" title="Dạng danh sách"><i class="fas fa-list"></i></button>
+                    <button class="view-btn" title="Dạng lưới"><i class="fas fa-th-large"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <main class="tasks-content">
+            <div class="task-card">
+                <div class="task-card-header">
+                    <span class="badge badge-warning">Đang làm</span>
+                    <button class="icon-btn"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <h3 class="task-title">Thiết kế UI cho trang Quản lý</h3>
+                <p class="task-desc">Sắp xếp lại layout và thẻ iframe cho đúng chuẩn HTML5.</p>
+                <div class="task-footer">
+                    <div class="task-meta">
+                        <span class="text-danger"><i class="fas fa-flag"></i> Cao</span>
+                        <span><i class="far fa-calendar"></i> 26 Th04</span>
+                    </div>
+                    <div class="user-avatar-sm">V</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
