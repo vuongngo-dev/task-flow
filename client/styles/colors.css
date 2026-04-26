@@ -1,0 +1,81 @@
+/* 
+==========================================================================
+HỆ THỐNG MÀU CHO TASK FLOW
+========================================================================== 
+*/
+
+/* --- BẢNG MÀU CHUNG DÙNG CHO CẢ 2 CHẾ ĐỘ --- */
+:root {
+    /* --- BẢNG MÀU SÁNG (LIGHT MODE) --- */
+    --bg-body: #F8F9FA;
+    --bg-card: #FFFFFF;
+    --bg-input: #FFFFFF;
+    
+    /* Màu văn bản */
+    --text-main: #1A1D23;      /* Tiêu đề, nội dung chính */
+    --text-secondary: #4A5568; /* Nội dung phụ */
+    --text-muted: #718096;     /* Văn bản mờ, chú thích */
+    --text-on-primary: #FFFFFF;
+    
+    /* Màu thương hiệu & Trạng thái */
+    --primary: #4A90E2;
+    --primary-light: #EBF4FF;
+    --primary-dark: #357ABD;
+    
+    --success: #2ECC71;
+    --success-light: #E9FBEF;
+    
+    --warning: #F1C40F;
+    --warning-light: #FEF9E7;
+    
+    --danger: #E74C3C;
+    --danger-light: #FDEDEC;
+    
+    /* Thành phần giao diện */
+    --border-color: #E2E8F0;
+    --border-hover: #CBD5E0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --overlay: rgba(0, 0, 0, 0.5);
+
+    /* Độ bo góc & Khoảng cách dùng chung */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* --- BẢNG MÀU TỐI (DARK MODE) --- */
+[data-theme="dark"] {
+    --bg-body: #121212;        /* Nền tối sâu */
+    --bg-card: #1E1E1E;        /* Nền thẻ Task nhẹ hơn một chút */
+    --bg-input: #2D2D2D;
+    
+    /* Màu văn bản sáng hơn để dễ đọc trên nền tối */
+    --text-main: #F7FAFC;
+    --text-secondary: #E2E8F0;
+    --text-muted: #A0AEC0;
+    --text-on-primary: #FFFFFF;
+    
+    /* Điều chỉnh sắc độ màu để dễ nhìn trên nền tối */
+    --primary: #63B3ED;
+    --primary-light: rgba(99, 179, 237, 0.15);
+    --primary-dark: #4299E1;
+    
+    --success: #48BB78;
+    --success-light: rgba(72, 187, 120, 0.1);
+    
+    --warning: #ECC94B;
+    --warning-light: rgba(236, 201, 75, 0.1);
+    
+    --danger: #F56565;
+    --danger-light: rgba(245, 101, 101, 0.1);
+    
+    /* Thành phần giao diện tối hơn để phù hợp với nền tối */ 
+    --border-color: #333333;
+    --border-hover: #444444;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.5);
+    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.4);
+    --overlay: rgba(0, 0, 0, 0.7);
+}
