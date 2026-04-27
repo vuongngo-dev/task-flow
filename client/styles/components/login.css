@@ -23,7 +23,7 @@ body {
     background-color: var(--bg-card);
     width: 100%;
     /* Max-width giúp card không quá to trên PC, nhưng width 100% giúp nó co lại trên Mobile */
-    max-width: 420px; 
+    max-width: 520px; 
     padding: 40px 30px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
@@ -78,7 +78,7 @@ body {
     width: 100%;
     /* Sử dụng border-box để padding không làm nở chiều rộng */
     box-sizing: border-box; 
-    padding: 14px 15px 14px 45px;
+    padding: 10px 15px 10px 50px;
     background-color: var(--bg-input);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -109,6 +109,26 @@ body {
 }
 
 .login-btn:hover {
+    background-color: var(--primary-dark);
+    filter: brightness(1.1);
+}
+
+/* Nút đăng ký */
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary);
+    color: var(--text-on-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: var(--transition-normal);
+}
+
+.register-btn:hover {
     background-color: var(--primary-dark);
     filter: brightness(1.1);
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Flow | Đăng nhập</title>
+    <title>Task Flow | Đăng ký</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/colors.css">
     <link rel="stylesheet" href="../styles/components/login.css">
@@ -12,14 +12,19 @@
     <div class="login-card">
         <!-- Biểu tượng và lời chào -->
         <i class="fas fa-check-circle" style="font-size: 50px; color: var(--primary-color); margin-bottom: 15px;"></i>
-        <h2>Chào mừng trở lại</h2>
-        <p>Đăng nhập để đồng bộ các tác vụ của bạn</p>
+        <h2>Chào mừng đến với Task Flow</h2>
+        <p>Đăng ký để bắt đầu sử dụng Task Flow</p>
 
         <!-- Form đăng nhập -->
-        <form action="" method="POST">
+        <form action="" method="POST">        
         <div class="input-group">
             <i class="fas fa-user"></i>
             <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Email" required>
         </div>
 
         <div class="input-group">
@@ -27,16 +32,21 @@
             <input type="password" id="password" placeholder="Mật khẩu" required>
         </div>
 
-        <button class="login-btn" onclick="">Đăng nhập</button>
+        <div class="input-group">
+            <i class="fas fa-key"></i>
+            <input type="password" id="confirm-password" placeholder="Xác nhận mật khẩu" required>
+        </div>
+
+        <button class="register-btn" onclick="">Đăng ký</button>
 
         <div class="footer-links">
-            Chưa có tài khoản? <a href="./register.html">Đăng ký ngay</a>
+            Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a>
         </div>
 
         <span class="divider">hoặc</span>
 
         <!-- Liên kết tiếp tục dùng thử -->
-        <a href="./dashboard.html" class="guest-mode"> tiếp tục dùng thử (Khách)</a>
+        <a href="dashboard.html" class="guest-mode"> tiếp tục dùng thử (Khách)</a>
         </form>
 
         <!-- Footer -->
