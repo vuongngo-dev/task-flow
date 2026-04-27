@@ -1,0 +1,125 @@
+/*
+==========================================================================
+SCRIPT: notifications.css
+DESCRIPTION: Styles cho bảng thông báo trong Dashboard.
+==========================================================================
+*/
+
+@import "./../colors.css";
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    padding: 20px;
+    background-color: var(--bg-body);
+}
+
+.notifications-panel {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    /* Cấu hình chiều cao tối đa để bảng không bị kéo dài vô tận,
+       tạo thanh cuộn bên trong nếu quá nhiều thông báo */
+    max-height: 500px;
+    overflow: hidden;
+}
+
+/* Header của Bảng */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.badge-danger {
+    background-color: var(--danger);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.icon-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 1rem; transition: color 0.2s; color: var(--text-muted);
+}
+.icon-btn:hover { color: var(--primary); }
+
+/* Tabs 2 luồng */
+.notif-tabs {
+    display: flex;
+    background-color: var(--bg-body);
+    border-bottom: 1px solid var(--border-color);
+}
+.notif-tab {
+    flex: 1;
+    background: transparent; border: none;
+    padding: 10px; font-weight: 500; font-size: 0.9rem;
+    color: var(--text-muted); cursor: pointer;
+    border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.notif-tab:hover { background-color: var(--border-color); }
+.notif-tab.active { color: var(--primary); border-bottom-color: var(--primary); background-color: var(--bg-card); }
+
+/* Nội dung danh sách */
+.notif-body {
+    flex: 1;
+    overflow-y: auto; /* Tự động cuộn nếu danh sách dài */
+}
+.notif-list { display: none; }
+.notif-list.active { display: block; }
+
+/* Từng dòng thông báo */
+.notif-item {
+    display: flex; gap: 12px; padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    position: relative; transition: background-color 0.2s;
+}
+.notif-item:hover { background-color: var(--bg-body); }
+.notif-item:last-child { border-bottom: none; }
+
+.notif-item.unread { background-color: var(--primary-light); }
+.notif-item.unread:hover { background-color: rgba(74, 144, 226, 0.15); }
+
+/* Icons */
+.notif-icon {
+    width: 36px; height: 36px; min-width: 36px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.bg-warning-light { background-color: var(--warning-light); color: var(--warning); }
+.bg-success-light { background-color: var(--success-light); color: var(--success); }
+.bg-primary-light { background-color: rgba(74, 144, 226, 0.2); color: var(--primary); }
+
+/* Text */
+.notif-content { flex: 1; padding-right: 40px; } /* Chừa chỗ cho các nút action nổi lên */
+.notif-text { font-size: 0.9rem; color: var(--text-main); margin-bottom: 4px; line-height: 1.4; }
+.notif-time { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Các nút Xóa / Đã đọc (Chỉ hiện khi hover chuột vào dòng) */
+.notif-actions {
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    display: flex; gap: 4px; opacity: 0; transition: opacity 0.2s;
+}
+.notif-item:hover .notif-actions { opacity: 1; }
+
+.action-btn {
+    width: 28px; height: 28px; border-radius: 50%; border: none;
+    background-color: var(--bg-card); color: var(--text-muted);
+    cursor: pointer; box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center;
+}
+.action-btn:hover { background-color: var(--border-color); color: var(--text-main); }
+.delete-btn:hover { color: var(--danger); }
+.mark-read-btn { color: var(--primary); font-size: 0.6rem; }

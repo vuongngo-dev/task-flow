@@ -8,6 +8,7 @@ DESCRIPTION: Styles cho trang đăng nhập.
 @import './../colors.css';
 
 body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;

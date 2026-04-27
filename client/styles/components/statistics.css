@@ -1,0 +1,299 @@
+/*
+==========================================================================
+FILE: statistics.css
+DESCRIPTION: Styles cho trang thống kê.
+==========================================================================
+*/
+
+@import './../colors.css';
+
+/* Kế thừa biến màu và reset cơ bản */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-card); /* Đồng bộ nền với dashboard */
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+/* LAYOUT 2 CỘT */
+.profile-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép rớt dòng trên màn hình nhỏ */
+    gap: 32px;
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.text-muted { color: var(--text-muted); }
+.badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; border: 1px solid currentColor; }
+.badge-warning { color: var(--warning); border-color: rgba(241, 196, 15, 0.4); }
+.badge-success { color: var(--success); border-color: rgba(46, 204, 113, 0.4); }
+
+/* --- CỘT TRÁI (SIDEBAR USER) --- */
+.profile-sidebar {
+    width: 296px; /* Bề rộng chuẩn của Sidebar GitHub */
+    flex-shrink: 0;
+}
+
+.profile-avatar-wrap {
+    position: relative;
+    width: 296px;
+    height: 296px;
+    margin-bottom: 16px;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%; /* Tròn xoe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    font-weight: bold;
+    box-shadow: var(--shadow-sm);
+}
+
+.avatar-status {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-sm);
+    cursor: default;
+}
+
+.profile-names { margin-bottom: 16px; }
+.fullname { font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+.username { font-size: 1.25rem; font-weight: 300; color: var(--text-muted); }
+
+.profile-bio {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 16px;
+}
+
+.btn-edit-profile {
+    width: 100%;
+    padding: 6px 16px;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: all var(--transition-fast);
+}
+
+.btn-edit-profile:hover {
+    background-color: var(--border-color);
+}
+
+.profile-stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-item i { color: var(--text-muted); width: 16px; text-align: center; }
+
+/* --- CỘT PHẢI (MAIN CONTENT) --- */
+.profile-main {
+    flex: 1;
+    min-width: 0; /* Ngăn chặn overflow trong Flexbox */
+}
+
+.profile-section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* KHỐI TASK GHIM (PINNED TASKS) */
+.pinned-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.pinned-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    background-color: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pinned-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.pinned-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.pinned-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+/* PROGRESS BAR */
+.progress-wrap { margin-top: auto; }
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* KHỐI SƠ ĐỒ HOẠT ĐỘNG (CONTRIBUTION GRAPH) */
+.contribution-panel {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px 24px;
+    background-color: var(--bg-card);
+}
+
+.contribution-graph {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto; /* Cuộn ngang nếu biểu đồ quá dài */
+    padding-bottom: 12px;
+}
+
+.graph-months {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.graph-grid {
+    display: flex;
+    gap: 3px; /* Khoảng cách giữa các tuần */
+}
+
+.graph-week {
+    display: flex;
+    flex-direction: column;
+    gap: 3px; /* Khoảng cách giữa các ngày */
+}
+
+.graph-day {
+    width: 12px;
+    height: 12px;
+    background-color: var(--border-color); /* Màu mặc định (level 0) */
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.graph-day:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+/* Tái tạo màu sắc biểu đồ y chang GitHub (Tone xanh lá) */
+[data-theme="dark"] .graph-day[data-level="0"] { background-color: #161b22; }
+.graph-day[data-level="0"] { background-color: #ebedf0; }
+.graph-day[data-level="1"] { background-color: #9be9a8; }
+.graph-day[data-level="2"] { background-color: #40c463; }
+.graph-day[data-level="3"] { background-color: #30a14e; }
+.graph-day[data-level="4"] { background-color: #216e39; }
+
+/* LEGEND (CHÚ GIẢI BÊN DƯỚI) */
+.contribution-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.legend-colors {
+    display: flex;
+    gap: 3px;
+    list-style: none;
+}
+
+.legend-colors li {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.legend-colors li[data-level="0"] { background-color: #ebedf0; }
+[data-theme="dark"] .legend-colors li[data-level="0"] { background-color: #161b22; }
+.legend-colors li[data-level="1"] { background-color: #9be9a8; }
+.legend-colors li[data-level="2"] { background-color: #40c463; }
+.legend-colors li[data-level="3"] { background-color: #30a14e; }
+.legend-colors li[data-level="4"] { background-color: #216e39; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .profile-sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-avatar-wrap {
+        width: 200px;
+        height: 200px;
+    }
+}

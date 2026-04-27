@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Focus Sessions (Windows Style)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/pomodoro.css">
+</head>
+<body>
+    <div class="fluent-container">
+        
+        <header class="fluent-header">
+            <div>
+                <h1>Phiên tập trung</h1>
+                <p class="text-muted">Đạt mục tiêu và hoàn thành công việc</p>
+            </div>
+            
+            <div class="fluent-tabs">
+                <button class="tab-btn active" data-time="25">Tập trung</button>
+                <button class="tab-btn" data-time="5">Nghỉ ngắn</button>
+                <button class="tab-btn" data-time="15">Nghỉ dài</button>
+            </div>
+        </header>
+
+        <div class="fluent-grid">
+            
+            <div class="fluent-panel timer-panel">
+                <div class="timer-wrapper">
+                    <svg class="timer-svg" viewBox="0 0 100 100">
+                        <circle class="timer-bg" cx="50" cy="50" r="48"></circle>
+                        <circle class="timer-path" cx="50" cy="50" r="48" id="timer-path"></circle>
+                    </svg>
+                    <div class="timer-display">
+                        <h1 id="time-left">25:00</h1>
+                        <p id="timer-status">Sẵn sàng</p>
+                    </div>
+                </div>
+
+                <div class="timer-controls">
+                    <button class="fluent-icon-btn" id="btn-reset" title="Đặt lại thời gian"><i class="fas fa-undo"></i></button>
+                    <button class="fluent-play-btn" id="btn-play" title="Bắt đầu"><i class="fas fa-play" id="play-icon"></i></button>
+                    <button class="fluent-icon-btn" id="btn-skip" title="Bỏ qua"><i class="fas fa-step-forward"></i></button>
+                </div>
+            </div>
+
+            <div class="fluent-panel progress-panel">
+                <h3 class="panel-title"><i class="fas fa-chart-pie text-muted"></i> Tiến độ hàng ngày</h3>
+                <div class="progress-stats">
+                    <div class="stat-circle">
+                        <h2>3</h2>
+                        <p>Chu kỳ</p>
+                    </div>
+                    <div class="stat-info">
+                        <p><strong>Mục tiêu:</strong> 5 chu kỳ</p>
+                        <p><strong>Đã tập trung:</strong> 1h 15m</p>
+                        <div class="fluent-progress-bar">
+                            <div class="fluent-progress-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fluent-panel tasks-panel">
+                <h3 class="panel-title"><i class="fas fa-check-square text-muted"></i> Công việc hiện tại</h3>
+                <div class="fluent-task-item">
+                    <input type="radio" class="task-radio">
+                    <div class="task-details">
+                        <h4>Phát triển tính năng LSMP</h4>
+                        <p>Tích hợp Wazuh server</p>
+                    </div>
+                    <button class="fluent-icon-btn"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+            </div>
+
+            <div class="fluent-panel spotify-panel">
+                <h3 class="panel-title"><i class="fab fa-spotify text-muted"></i> Spotify</h3>
+                <iframe style="border-radius: 8px;" 
+                    src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator" 
+                    width="100%" height="80" frameBorder="0" allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const timeLeftDisplay = document.getElementById('time-left');
+        const timerStatus = document.getElementById('timer-status');
+        const timerPath = document.getElementById('timer-path');
+        const btnPlay = document.getElementById('btn-play');
+        const playIcon = document.getElementById('play-icon');
+        const btnReset = document.getElementById('btn-reset');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+
+        let isRunning = false;
+        let timerInterval;
+        let totalTime = 25 * 60; 
+        let timeLeft = totalTime;
+
+        // Bán kính giờ là 48 (sát viền SVG chuẩn Windows)
+        const CIRCUMFERENCE = 2 * Math.PI * 48;
+        timerPath.style.strokeDasharray = CIRCUMFERENCE;
+
+        function updateDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timeLeftDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const progress = timeLeft / totalTime;
+            const dashoffset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
+            timerPath.style.strokeDashoffset = dashoffset;
+        }
+
+        function toggleTimer() {
+            if (isRunning) {
+                clearInterval(timerInterval);
+                playIcon.className = 'fas fa-play';
+                timerStatus.textContent = 'Đã tạm dừng';
+            } else {
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        timerStatus.textContent = 'Hết giờ!';
+                        isRunning = false;
+                        playIcon.className = 'fas fa-play';
+                    }
+                }, 1000);
+                playIcon.className = 'fas fa-pause';
+                timerStatus.textContent = 'Đang tập trung...';
+            }
+            isRunning = !isRunning;
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timeLeft = totalTime;
+            playIcon.className = 'fas fa-play';
+            timerStatus.textContent = 'Sẵn sàng';
+            updateDisplay();
+        }
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                totalTime = parseInt(btn.getAttribute('data-time')) * 60;
+                resetTimer();
+                
+                if (btn.textContent === 'Tập trung') {
+                    document.documentElement.style.setProperty('--pomo-color', 'var(--primary)');
+                } else if (btn.textContent === 'Nghỉ ngắn') {
+                    document.documentElement.style.setProperty('--pomo-color', 'var(--success)');
+                } else {
+                    document.documentElement.style.setProperty('--pomo-color', 'var(--warning)');
+                }
+            });
+        });
+
+        btnPlay.addEventListener('click', toggleTimer);
+        btnReset.addEventListener('click', resetTimer);
+        document.getElementById('btn-skip').addEventListener('click', () => { timeLeft = 0; updateDisplay(); });
+
+        updateDisplay();
+    </script>
+</body>
+</html>

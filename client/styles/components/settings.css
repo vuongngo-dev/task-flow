@@ -1,0 +1,175 @@
+/* ==========================================================================
+   BẢNG CÀI ĐẶT (SETTINGS)
+   ========================================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    padding: 32px;
+}
+
+.text-muted { color: var(--text-muted); }
+.text-danger { color: var(--danger) !important; }
+
+.settings-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-body);
+}
+
+.settings-header h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 4px; }
+.settings-header p { font-size: 0.9rem; }
+
+/* BỐ CỤC CHIA CỘT */
+.settings-layout {
+    display: flex;
+    min-height: 500px;
+}
+
+/* SIDEBAR MENU */
+.settings-sidebar {
+    width: 250px;
+    border-right: 1px solid var(--border-color);
+    padding: 24px 16px;
+    background-color: var(--bg-card);
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.setting-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.setting-tab:hover { background-color: var(--bg-body); color: var(--text-main); }
+.setting-tab.active { background-color: var(--primary-light); color: var(--primary); }
+
+/* MAIN CONTENT */
+.settings-content {
+    flex: 1;
+    padding: 32px;
+    background-color: var(--bg-card);
+}
+
+.setting-panel { display: none; animation: fadeIn 0.3s ease; }
+.setting-panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+.setting-panel h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 24px; color: var(--text-main); }
+
+/* CÁC NHÓM CÀI ĐẶT */
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.setting-item {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+.setting-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.item-info h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; color: var(--text-main); }
+.item-info p { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Bố cục ngang cho Toggle & Dropdown */
+.toggle-item, .row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* NÚT GẠT BẬT/TẮT (TOGGLE SWITCH) - Phong cách hiện đại */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--border-color);
+    transition: .3s; border-radius: 24px;
+}
+.slider:before {
+    position: absolute; content: "";
+    height: 18px; width: 18px; left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .3s; border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* CÁC THÀNH PHẦN FORM (INPUTS) */
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.input-group label { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+.form-input, .form-select {
+    width: 100%; max-width: 400px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+.form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); }
+.form-input:disabled, .form-input[readonly] { background-color: var(--bg-body); cursor: not-allowed; color: var(--text-muted); }
+
+/* AVATAR */
+.avatar-setting { display: flex; align-items: center; gap: 20px; }
+.avatar-preview {
+    width: 80px; height: 80px; border-radius: 50%;
+    background-color: var(--primary); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; font-weight: bold;
+}
+.avatar-actions { display: flex; flex-direction: column; gap: 8px; }
+
+/* NÚT BẤM */
+.btn {
+    padding: 10px 20px; border-radius: var(--radius-md); font-size: 0.95rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; border: none;
+}
+.btn-primary { background-color: var(--primary); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); }
+.btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+.btn-outline:hover { background-color: var(--bg-body); }
+.btn-text { background-color: transparent; padding: 0; text-align: left; width: fit-content; }
+.btn-text:hover { text-decoration: underline; }
+
+.setting-actions { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; }

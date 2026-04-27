@@ -7,8 +7,11 @@ DESCRIPTION: Styles cho trang giới thiệu.
 
 @import './../colors.css';
 
+@import './../colors.css';
+
 /* Khối chứa */
 body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--bg-body);

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Cài đặt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/settings.css">
+
+    <script src="../scripts/components/settings.js"></script>
+</head>
+<body>
+    <div class="settings-container">
+        
+        <header class="settings-header">
+            <h1>Cài đặt hệ thống</h1>
+            <p class="text-muted">Tùy chỉnh trải nghiệm Task Flow của bạn</p>
+        </header>
+
+        <div class="settings-layout">
+            
+            <aside class="settings-sidebar">
+                <nav class="settings-nav">
+                    <button class="setting-tab active" data-target="setting-account">
+                        <i class="fas fa-user-circle"></i> Tài khoản
+                    </button>
+                    <button class="setting-tab" data-target="setting-appearance">
+                        <i class="fas fa-paint-brush"></i> Giao diện
+                    </button>
+                    <button class="setting-tab" data-target="setting-notifications">
+                        <i class="fas fa-bell"></i> Thông báo
+                    </button>
+                    <button class="setting-tab" data-target="setting-advanced">
+                        <i class="fas fa-sliders-h"></i> Nâng cao
+                    </button>
+                </nav>
+            </aside>
+
+            <main class="settings-content">
+                
+                <section class="setting-panel active" id="setting-account">
+                    <h2>Thông tin tài khoản</h2>
+                    
+                    <div class="setting-group">
+                        <div class="setting-item avatar-setting">
+                            <div class="avatar-preview">V</div>
+                            <div class="avatar-actions">
+                                <button class="btn btn-outline">Đổi ảnh đại diện</button>
+                                <button class="btn btn-text text-danger">Xóa ảnh</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Tên hiển thị</label>
+                            <input type="text" class="form-input" value="Ngô Đức Vương">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Email liên hệ</label>
+                            <input type="email" class="form-input" value="contact@ngoducvuong.com" readonly title="Không thể đổi email">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Vai trò</label>
+                            <input type="text" class="form-input" value="Software Engineer" disabled>
+                        </div>
+                    </div>
+
+                    <div class="setting-actions">
+                        <button class="btn btn-primary">Lưu thay đổi</button>
+                    </div>
+                </section>
+
+                <section class="setting-panel" id="setting-appearance">
+                    <h2>Tùy chỉnh Giao diện</h2>
+                    
+                    <div class="setting-group">
+                        <div class="setting-item toggle-item">
+                            <div class="item-info">
+                                <h4>Chế độ tối (Dark Mode)</h4>
+                                <p>Bảo vệ mắt khi làm việc trong môi trường thiếu sáng.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="theme-toggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item row-item">
+                            <div class="item-info">
+                                <h4>Ngôn ngữ hệ thống</h4>
+                                <p>Chọn ngôn ngữ hiển thị mặc định.</p>
+                            </div>
+                            <select class="form-select">
+                                <option value="vi">Tiếng Việt</option>
+                                <option value="en">English (US)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="setting-panel" id="setting-notifications">
+                    <h2>Quản lý Thông báo</h2>
+                    
+                    <div class="setting-group">
+                        <div class="setting-item toggle-item">
+                            <div class="item-info">
+                                <h4>Thông báo đẩy (Push Notifications)</h4>
+                                <p>Nhận thông báo ngay trên trình duyệt khi có sự kiện mới.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item toggle-item">
+                            <div class="item-info">
+                                <h4>Âm thanh thông báo</h4>
+                                <p>Phát âm thanh "Ting" khi nhận thông báo.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item toggle-item">
+                            <div class="item-info">
+                                <h4>Nhắc nhở qua Email</h4>
+                                <p>Gửi email tổng hợp các công việc quá hạn mỗi buổi sáng.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../scripts/settings.js"></script>
+</body>
+</html>
