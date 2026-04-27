@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Trang Quản Lý</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/dashboard.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="brand">
+                    <i class="fas fa-check-circle"></i>
+                    Task Flow
+                </h2>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard-content.html" target="content-frame" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-label">Trang quản lý</span>
+                </a>
+                <a href="../pages/tasks.html" target="content-frame" class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-label">Công việc</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="user-profile">
+                        <div class="user-avatar">V</div>
+                        <div class="sidebar-user-info">
+                            <div class="user-name">Ngô Đức Vương</div>
+                            <div class="user-role">Admin / Portfolio</div>
+                        </div>
+                    </div>
+                    
+                    <div class="user-actions">
+                        <button class="action-btn" title="Cài đặt hệ thống">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <button class="action-btn logout-btn" title="Đăng xuất">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Tổng quan Dashboard</h1>
+
+                <nav class="header-nav">
+                    <a href="#" target="content-frame" class="nav-item active">
+                        <span class="nav-icon"><i class="fas fa-bell"></i></span>
+                    </a>
+                    <a href="#" target="content-frame" class="nav-item">
+                        <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                    </a>
+                </nav>
+            </header>
+
+            <div class="dashboard-content">
+                <iframe 
+                    name="content-frame" 
+                    src="./../pages/tasks.html" 
+                    frameborder="0" 
+                    class="dashboard-iframe"
+                    title="Main Content Area">
+                </iframe>
+
+                </div>
+        </main>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+/*
+==========================================================================
+FILE: dashboard.css
+DESCRIPTION: Style trang trung tâm điều khiển
+==========================================================================
+*/
+
+@import './../colors.css';
+/* ==========================================================================
+   FILE: dashboard.css (Bản Hoàn Thiện)
+   ========================================================================== */
+
+/* --- 1. RESET & CƠ BẢN --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+    height: 100vh;
+    overflow: hidden; /* Chỉ cuộn phần content bên trong */
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* --- 2. BỐ CỤC CHÍNH (APP SHELL) --- */
+.app-shell {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- 3. SIDEBAR --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: width var(--transition-normal), transform var(--transition-normal);
+    z-index: 10;
+}
+
+.sidebar-header {
+    height: 70px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+.brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand i {
+    color: var(--primary);
+}
+
+/* --- 3.1 SIDEBAR NAV --- */
+.sidebar-nav {
+    flex: 1;
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+}
+
+.sidebar-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.sidebar-nav .nav-item:hover {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+.sidebar-nav .nav-item.active {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+/* --- 3.2 SIDEBAR FOOTER & USER INFO --- */
+.sidebar-footer {
+    padding: 16px 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: var(--bg-body);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background-color: var(--primary);
+    color: var(--text-on-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.sidebar-user-info {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.user-role {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    margin-top: 2px;
+}
+
+.user-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.action-btn:hover {
+    background-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.logout-btn:hover {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+/* --- 4. MAIN CONTENT & HEADER --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.main-header {
+    height: 70px;
+    padding: 0 32px;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Đẩy Title và Nav sang 2 bên */
+}
+
+.main-header h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* --- 4.1 HEADER NAV (Tối ưu cho Icon tròn) --- */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-nav .nav-item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    background-color: transparent;
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+    position: relative; /* Để đặt dấu chấm đỏ thông báo */
+}
+
+.header-nav .nav-item:hover {
+    background-color: var(--bg-body);
+    color: var(--primary);
+}
+
+/* Chấm đỏ thông báo trên icon (Chuông) */
+.header-nav .nav-item.active::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--danger);
+    border-radius: 50%;
+    border: 2px solid var(--bg-card);
+}
+
+/* --- 5. DASHBOARD CONTENT (IFRAME) --- */
+.dashboard-content {
+    flex: 1;
+    background-color: var(--bg-body); /* Để nền iframe hòa vào nền tổng thể */
+    padding: 16px; /* Khoảng cách để iframe không sát lề */
+}
+
+.dashboard-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- 6. RESPONSIVE BƠM CHO MOBILE --- */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        height: 100%;
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-header {
+        padding: 0 16px;
+    }
+}
