@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Hồ sơ thống kê</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/statistics.css">
+</head>
+<body>
+    <div class="profile-container">
+        
+        <aside class="profile-sidebar">
+            <div class="profile-avatar-wrap">
+                <div class="profile-avatar">V</div>
+                <div class="avatar-status" title="Đang làm việc">🎯</div>
+            </div>
+            
+            <div class="profile-names">
+                <h1 class="fullname">Ngô Đức Vương</h1>
+                <h2 class="username">vngoduc</h2>
+            </div>
+            
+            <div class="profile-bio">
+                <p>Software Engineer & Admin Portfolio. Đam mê xây dựng hệ thống và tối ưu hóa hiệu năng.</p>
+            </div>
+            
+            <button class="btn btn-edit-profile">Chỉnh sửa hồ sơ</button>
+            
+            <div class="profile-stats-list">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i> <span><b>12</b> Cộng sự</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-star"></i> <span><b>5</b> Dự án</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-map-marker-alt"></i> <span>STU - Hồ Chí Minh</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="profile-main">
+            
+            <section class="profile-section">
+                <h3 class="section-title">
+                    <i class="fas fa-thumbtack text-muted"></i> Công việc quan trọng đã ghim
+                </h3>
+                
+                <div class="pinned-grid">
+                    <div class="pinned-card">
+                        <div class="pinned-header">
+                            <h4 class="pinned-title"><i class="far fa-clipboard text-muted"></i> Phát triển tính năng LSMP</h4>
+                            <span class="badge badge-warning">Đang tiến hành</span>
+                        </div>
+                        <p class="pinned-desc">Hoàn thiện hệ thống giám sát an ninh hạng nhẹ cho SME với Wazuh.</p>
+                        
+                        <div class="progress-wrap">
+                            <div class="progress-info">
+                                <span>Tiến độ</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 75%; background-color: var(--primary);"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pinned-card">
+                        <div class="pinned-header">
+                            <h4 class="pinned-title"><i class="far fa-clipboard text-muted"></i> UML Thư viện STU</h4>
+                            <span class="badge badge-success">Hoàn thành</span>
+                        </div>
+                        <p class="pinned-desc">Thiết kế Use Case, Class Diagram và Sequence Diagram cho đồ án.</p>
+                        
+                        <div class="progress-wrap">
+                            <div class="progress-info">
+                                <span>Tiến độ</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 100%; background-color: var(--success);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="profile-section">
+                <h3 class="section-title">
+                    <i class="fas fa-chart-line text-muted"></i> Sơ đồ hoạt động (365 ngày qua)
+                </h3>
+                
+                <div class="contribution-panel">
+                    <div class="contribution-graph" id="activity-graph">
+                        <div class="graph-months">
+                            <span>Thg 1</span><span>Thg 2</span><span>Thg 3</span><span>Thg 4</span>
+                        </div>
+                        <div class="graph-grid">
+                            </div>
+                    </div>
+                    
+                    <div class="contribution-footer">
+                        <div class="legend-text">Ít hơn</div>
+                        <ul class="legend-colors">
+                            <li data-level="0"></li>
+                            <li data-level="1"></li>
+                            <li data-level="2"></li>
+                            <li data-level="3"></li>
+                            <li data-level="4"></li>
+                        </ul>
+                        <div class="legend-text">Nhiều hơn</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const grid = document.querySelector('.graph-grid');
+        // Tạo 30 cột (tuần), mỗi cột 7 ô (ngày) để Demo UI
+        for (let i = 0; i < 30; i++) {
+            const week = document.createElement('div');
+            week.className = 'graph-week';
+            for (let j = 0; j < 7; j++) {
+                const day = document.createElement('div');
+                day.className = 'graph-day';
+                // Random mức độ đóng góp từ 0 đến 4
+                const level = Math.floor(Math.random() * 5); 
+                day.setAttribute('data-level', level);
+                day.title = `${Math.floor(Math.random() * 10)} task completed`;
+                week.appendChild(day);
+            }
+            grid.appendChild(week);
+        }
+    </script>
+</body>
+</html>
