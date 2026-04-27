@@ -5,6 +5,8 @@ DESCRIPTION: Style trang quản lý công việc
 ==========================================================================
 */
 
+@import './../colors.css';
+
 /* --- 1. RESET & BASE (Cho Iframe) --- */
 * {
     box-sizing: border-box;

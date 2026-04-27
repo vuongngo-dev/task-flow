@@ -1,0 +1,277 @@
+/*
+==========================================================================
+FILE: pomodoro.css
+DESCRIPTION: Styles cho trang pomodoro.
+==========================================================================
+*/
+
+@import '../colors.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+    background-color: var(--bg-body); /* Màu nền nhạt / Mica của Windows */
+    color: var(--text-main);
+    /* Gỡ bỏ các thuộc tính fix center cứng nhắc */
+    height: 100%;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+:root {
+    --pomo-color: var(--primary); 
+    --fluent-radius: 8px; /* Đặc trưng Windows 11 bo góc 8px */
+}
+
+.fluent-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+}
+
+.text-muted { 
+    color: var(--text-muted);
+}
+
+/* --- HEADER & TABS --- */
+.fluent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.fluent-header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.fluent-tabs {
+    display: flex;
+    background-color: var(--border-color); /* Nền xám nhạt */
+    border-radius: var(--fluent-radius);
+    padding: 4px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.tab-btn.active {
+    background-color: var(--bg-card);
+    color: var(--pomo-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* --- GRID LAYOUT --- */
+.fluent-grid {
+    display: grid;
+    /* Tự động chia cột: nếu màn hình hẹp thì rớt xuống 1 cột, rộng thì 2 cột */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.fluent-panel {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--fluent-radius);
+    padding: 24px;
+    /* Bỏ box-shadow khổng lồ, dùng viền mảnh giống ứng dụng desktop */
+}
+
+/* Cho panel Đồng hồ chiếm 2 dòng nếu màn hình đủ to */
+.timer-panel {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.panel-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- ĐỒNG HỒ TẬP TRUNG (TIMER) --- */
+.timer-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.timer-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-bg {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 2; /* Viền siêu mảnh */
+}
+
+.timer-path {
+    fill: none;
+    stroke: var(--pomo-color);
+    stroke-width: 4; /* Nét chạy thời gian sắc sảo */
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s linear, stroke var(--transition-normal);
+}
+
+.timer-display { text-align: center; }
+#time-left {
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--text-main);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- NÚT ĐIỀU KHIỂN --- */
+.timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.fluent-icon-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.fluent-icon-btn:hover { 
+    background-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.fluent-play-btn {
+    width: 56px; 
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--pomo-color);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.1s;
+}
+.fluent-play-btn:hover { 
+    filter: brightness(1.1); 
+}
+.fluent-play-btn:active { 
+    transform: scale(0.95); 
+}
+
+/* --- TIẾN ĐỘ & TASKS --- */
+.progress-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat-circle {
+    width: 80px; height: 80px;
+    border: 4px solid var(--pomo-color);
+    border-radius: 50%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+.stat-circle h2 { 
+    font-size: 1.5rem; 
+    line-height: 1; 
+    margin: 0; 
+}
+.stat-circle p { 
+    font-size: 0.7rem; 
+    color: var(--text-muted); 
+    text-transform: uppercase;
+}
+
+.stat-info { 
+    flex: 1; 
+    font-size: 0.9rem; 
+    color: var(--text-secondary); 
+}
+.stat-info p {
+    margin-bottom: 4px;
+}
+
+.fluent-progress-bar {
+    width: 100%; 
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px; 
+    margin-top: 8px; 
+    overflow: hidden;
+}
+.fluent-progress-fill {
+    height: 100%; background-color: var(--pomo-color); border-radius: 3px;
+}
+
+.fluent-task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--bg-body);
+    border-radius: var(--fluent-radius);
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+.fluent-task-item:hover {
+     border-color: var(--border-hover);
+}
+
+.task-radio {
+    width: 18px; 
+    height: 18px; 
+    cursor: pointer; 
+}
+.task-details {
+    flex: 1;
+}
+.task-details h4 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main); 
+}
+.task-details p { 
+    font-size: 0.8rem; 
+    color: var(--text-muted); 
+}
