@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Notifications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/notifications.css">
+</head>
+<body>
+    <div class="dashboard-panel notifications-panel">
+    
+        <div class="panel-header">
+            <h2 class="panel-title">
+                <i class="fas fa-bell text-muted"></i> Thông báo
+                <span class="badge badge-danger" id="notif-count">2</span>
+            </h2>
+            <button class="icon-btn text-muted" id="mark-all-read" title="Đánh dấu tất cả đã đọc">
+                <i class="fas fa-check-double"></i>
+            </button>
+        </div>
+
+        <div class="notif-tabs">
+            <button class="notif-tab active" data-target="notif-tasks">Nhiệm vụ</button>
+            <button class="notif-tab" data-target="notif-system">Hệ thống</button>
+        </div>
+
+        <div class="notif-body">
+            
+            <div class="notif-list active" id="notif-tasks">
+                <div class="notif-item unread">
+                    <div class="notif-icon bg-warning-light text-warning">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text">Nhiệm vụ <b>"Phát triển tính năng LSMP"</b> sắp đến hạn trong 2 giờ nữa.</p>
+                        <span class="notif-time">10 phút trước</span>
+                    </div>
+                    <div class="notif-actions">
+                        <button class="action-btn mark-read-btn" title="Đánh dấu đã đọc"><i class="fas fa-circle"></i></button>
+                        <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="notif-item">
+                    <div class="notif-icon bg-success-light text-success">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text">Bạn đã hoàn thành <b>"UML Thư viện STU"</b>.</p>
+                        <span class="notif-time">Hôm qua</span>
+                    </div>
+                    <div class="notif-actions">
+                        <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notif-list" id="notif-system">
+                <div class="notif-item unread">
+                    <div class="notif-icon bg-primary-light text-primary">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text">Bảo trì hệ thống máy chủ vào lúc 00:00 đêm nay.</p>
+                        <span class="notif-time">1 giờ trước</span>
+                    </div>
+                    <div class="notif-actions">
+                        <button class="action-btn mark-read-btn" title="Đánh dấu đã đọc"><i class="fas fa-circle"></i></button>
+                        <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
