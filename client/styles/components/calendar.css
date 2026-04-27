@@ -1,0 +1,132 @@
+/* ==========================================================================
+   FILE: calendar.css (Windows 11 Fluent Design)
+   ========================================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    height: 100vh;
+}
+
+.calendar-app {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- 1. LƯỚI LỊCH CHÍNH --- */
+.calendar-main {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+#month-year-display { font-size: 1.8rem; font-weight: 600; }
+
+.calendar-nav { display: flex; gap: 8px; }
+.nav-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.nav-btn:hover { background: var(--border-color); }
+.nav-btn.secondary { font-weight: 500; padding: 8px 20px; }
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    flex: 1;
+}
+
+.day-name {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding-bottom: 16px;
+}
+
+.days-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column: span 7;
+    flex: 1;
+    gap: 2px; /* Đường kẻ mờ giữa các ngày */
+    background-color: var(--border-color);
+    border: 1px solid var(--border-color);
+}
+
+.calendar-day {
+    background-color: var(--bg-card);
+    padding: 12px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.calendar-day:hover { background-color: var(--bg-body); }
+.calendar-day.today { background-color: var(--primary-light); }
+.calendar-day.today .day-number { color: var(--primary); font-weight: 700; }
+
+.day-number { font-size: 0.95rem; font-weight: 500; }
+
+/* Dấu chấm thông báo có nhiệm vụ */
+.task-indicators {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+}
+.dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background-color: var(--primary);
+}
+.dot.high { background-color: var(--danger); }
+
+/* --- 2. BẢNG CHI TIẾT BÊN PHẢI --- */
+.calendar-aside {
+    width: 350px;
+    background-color: var(--bg-card);
+    border-left: 1px solid var(--border-color);
+    padding: 32px 24px;
+    overflow-y: auto;
+}
+
+.aside-header h3 { font-size: 1.2rem; margin-bottom: 4px; }
+.aside-header span { font-size: 0.9rem; color: var(--text-muted); }
+
+.notifications-list { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.notification-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background-color: var(--bg-body);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary);
+}
+.notification-item.high-priority { border-left-color: var(--danger); }
+
+.notif-time { font-weight: 700; font-size: 0.85rem; color: var(--text-secondary); min-width: 45px; }
+.notif-content h4 { font-size: 0.95rem; margin-bottom: 4px; }
+.notif-content p { font-size: 0.8rem; color: var(--text-muted); }
+
+.empty-state { text-align: center; padding-top: 40px; color: var(--text-muted); }
+.empty-state i { font-size: 3rem; margin-bottom: 16px; opacity: 0.3; }

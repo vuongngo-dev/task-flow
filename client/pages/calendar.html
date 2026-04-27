@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow | Lịch nhiệm vụ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/components/calendar.css">
+    <script src="../scripts/components/calendar.js" defer></script>
+</head>
+<body>
+    <div class="calendar-app">
+        <main class="calendar-main">
+            <header class="calendar-header">
+                <div class="current-month">
+                    <h1 id="month-year-display">Tháng 4, 2026</h1>
+                </div>
+                <div class="calendar-nav">
+                    <button class="nav-btn" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                    <button class="nav-btn secondary" id="btn-today">Hôm nay</button>
+                    <button class="nav-btn" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </header>
+
+            <div class="calendar-grid">
+                <div class="day-name">Th 2</div>
+                <div class="day-name">Th 3</div>
+                <div class="day-name">Th 4</div>
+                <div class="day-name">Th 5</div>
+                <div class="day-name">Th 6</div>
+                <div class="day-name">Th 7</div>
+                <div class="day-name">CN</div>
+                
+                <div class="days-container" id="days-grid"></div>
+            </div>
+        </main>
+
+        <aside class="calendar-aside">
+            <div class="aside-header">
+                <h3>Nhiệm vụ sắp tới</h3>
+                <span id="selected-date-label">Ngày 27 tháng 4</span>
+            </div>
+
+            <div class="notifications-list" id="task-details">
+                <div class="notification-item high-priority">
+                    <div class="notif-time">09:00</div>
+                    <div class="notif-content">
+                        <h4>Phát triển tính năng LSMP</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Lab 402 - STU</p>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notif-time">14:30</div>
+                    <div class="notif-content">
+                        <h4>Họp nhóm đồ án UML</h4>
+                        <p><i class="fas fa-video"></i> Google Meet</p>
+                    </div>
+                </div>
+
+                <div class="empty-state" style="display: none;">
+                    <i class="fas fa-calendar-check"></i>
+                    <p>Không có nhiệm vụ nào trong ngày này</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="../scripts/calendar.js"></script>
+</body>
+</html>
