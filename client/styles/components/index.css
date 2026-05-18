@@ -20,7 +20,7 @@ body {
 
 /* Header Styles */
 header {
-    display: fixed;
+    display: flex;
     flex-wrap: wrap; /* Bắt buộc để menu rớt dòng trên Mobile */
     align-items: center;
     padding: 15px 20px;
@@ -87,7 +87,7 @@ header {
     margin: 0;
     color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
     border-bottom: 1px solid var(--border-color);
     animation: fadeIn var(--transition-normal);
@@ -95,6 +95,7 @@ header {
 
 .nav a:not(.btn):hover {
     color: var(--primary);
+    font-weight: 700;
 }
 
 .nav a:not(.btn):last-of-type {
