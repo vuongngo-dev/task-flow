@@ -14,19 +14,13 @@ function toggleMenu() {
     }
 }
 
-function loadPage(htmlUrl, cssUrl, jsUrl) {
+function loadPage(htmlUrl, cssUrl) {
     // 1. Đổi CSS riêng cho trang
     const dynamicCss = document.getElementById('dynamic-css');
-    const dynamicJs = document.getElementById('dynamic-js');
     if (cssUrl) {
         dynamicCss.href = cssUrl; // Nạp file CSS mới
     } else {
         dynamicCss.href = ""; // Xóa CSS riêng nếu trang không cần
-    }
-    if (jsUrl) {
-        dynamicJs.src = jsUrl; // Nạp file JS mới
-    } else {
-        dynamicJs.src = ""; // Xóa JS riêng nếu trang không cần
     }
 
     // 2. Tải HTML đắp vào thẻ <main>
