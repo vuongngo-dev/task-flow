@@ -32,7 +32,7 @@ function loadPage(htmlUrl, cssUrl) {
         .then(html => {
             document.getElementById('main-content').innerHTML = html;
             
-            // Đóng menu trên mobile sau khi click (nếu menu đang mở)
+            // Đóng menu sau khi click (nếu menu đang mở)
             var nav = document.getElementById('navigation');
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');

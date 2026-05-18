@@ -16,7 +16,6 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
     gap: 40px;
     position: relative;
     color: #334155;
-    animation: contactFadeIn 0.4s ease-out;
 }
 
 /* --- THANH MỤC LỤC CHÍNH --- */
@@ -28,6 +27,7 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
     height: fit-content;
     opacity: 1;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: FadeUp var(--transition-normal);
 }
 
 .tf-sidebar-inner {
@@ -92,9 +92,11 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
 .tf-main-content {
     flex: 1;
     min-width: 0;
+    animation: FadeUp var(--transition-normal);
 }
 .tf-header {
     margin-bottom: 40px;
+    animation: FadeDown var(--transition-normal);
 }
 .tf-main-title {
     font-size: 2.2rem;
@@ -235,8 +237,13 @@ code {
     }
 }
 
+
 /* Animation */
-@keyframes contactFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes FadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes FadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
