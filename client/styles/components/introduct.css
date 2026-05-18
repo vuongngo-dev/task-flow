@@ -25,7 +25,7 @@ body {
     color: var(--color-text);
 >>>>>>> feature/introduct
     line-height: 1.6;
-    animation: fadeIn var(--transition-normal);
+    animation: FadeUp var(--transition-normal);
 }
 
 
@@ -71,7 +71,7 @@ body {
     font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.2s;
+    animation: FadeUp var(--transition-normal);
 }
 
 .tf-btn-primary:hover {
@@ -238,6 +238,12 @@ body {
     font-size: 0.95rem;
 }
 
+
+.tf-value-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
 /* --- CALL TO ACTION (Cuối trang) --- */
 .tf-cta-section {
     text-align: center;
@@ -262,8 +268,13 @@ body {
     .tf-value-section { flex-direction: column; align-items: center; }
 }
 
-/* --- ANIMATION --- */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* --- Animation --- */
+/* Animation Styles */
+@keyframes FadeUp {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes FadeDown {
+    from { opacity: 1; transform: translateY(-10px); }
+    to { opacity: 0; transform: translateY(0px); }
 }

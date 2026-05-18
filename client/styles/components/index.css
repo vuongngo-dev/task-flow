@@ -16,6 +16,7 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     transition: var(--transition-normal);
+    animation: FadeDown var(--transition-normal);
 }
 
 /* Header Styles */
@@ -33,6 +34,16 @@ header {
     font-weight: bold;
     color: var(--primary);
     order: 1; /* Luôn xếp đầu tiên bên trái */
+}
+
+.brand a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.brand a:active {
+    text-decoration: none;
+    color: var(--primary);
 }
 
 /* Xóa ranh giới hộp của thẻ nav để Header điều khiển các nút và link */
@@ -90,7 +101,7 @@ header {
     font-weight: 700;
     font-size: 16px;
     border-bottom: 1px solid var(--border-color);
-    animation: fadeIn var(--transition-normal);
+    animation: FadeUp var(--transition-normal);
 }
 
 .nav a:not(.btn):hover {
@@ -105,7 +116,7 @@ header {
 /* Khi Javascript kích hoạt hàm activeMenu() */
 .nav.active a:not(.btn) {
     display: block;
-    animation: fadeIn var(--transition-normal);
+    animation: FadeDown var(--transition-normal);
 }
 
 /* Desktop Styles */
@@ -146,7 +157,11 @@ header {
 }
 
 /* Animation Styles */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
+@keyframes FadeUp {
+    from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+@keyframes FadeDown {
+    from { opacity: 1; transform: translateY(-10px); }
+    to { opacity: 0; transform: translateY(0px); }
 }
