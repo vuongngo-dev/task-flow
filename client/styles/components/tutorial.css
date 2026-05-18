@@ -1,0 +1,235 @@
+/*
+==========================================================================
+FILE: tutorial.css
+DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
+==========================================================================
+*/
+
+
+/* Global Styles */
+.tutorial-container {
+    font-family: var(--font-sans);
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    gap: 40px;
+    position: relative;
+    color: #334155;
+}
+
+/* --- THANH MỤC LỤC CHÍNH --- */
+.tf-sidebar-inner {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 90px;
+    height: fit-content;
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tf-sidebar-inner {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative; /* Làm gốc tọa độ cho nút đóng bên trong */
+}
+
+.tf-sidebar-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; }
+.tf-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.tf-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+.tf-link i {
+    width: 16px;
+    text-align: center;
+}
+.tf-link:hover {
+    color: #3b82f6;
+    background-color: #f1f5f9;
+}
+.tf-link.active {
+    color: #3b82f6;
+    background-color: #eff6ff;
+    font-weight: 600;
+}
+
+/* Trạng thái ẩn bảng mục lục trên PC */
+.tf-sidebar-inner.collapsed {
+    display: none;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    margin-right: -40px;
+}
+
+/* --- KHỐI NỘI DUNG CHÍNH (BÊN PHẢI) --- */
+.tf-main-content {
+    flex: 1;
+    min-width: 0;
+}
+.tf-header {
+    margin-bottom: 40px;
+}
+.tf-main-title {
+    font-size: 2.2rem;
+    color: var(--text-main);
+    margin: 0 0 10px 0;
+}
+.tf-lead-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+.tf-section h2 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tf-section h2 i {
+    color: var(--primary);
+}
+.tf-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+.tf-divider {
+    border: 0;
+    border-top: var(--brorder-color) 1px solid;
+    margin: 40px 0;
+}
+code {
+    background-color: var(--bg-body);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+.tf-note {
+    background-color: var(--bg-body);
+    border-left: 4px solid var(--success);
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    color: var(--success-text);
+}
+
+/* --- NÚT ĐIỀU KHIỂN TRÒN FLOATING (ĐÃ CHUYỂN SANG GÓC TRÁI) --- */
+.tf-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* Đổi từ right sang left */
+    width: 50px;
+    height: 50px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 999;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.tf-toggle-btn:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+}
+
+/* --- NÚT ĐÓNG MỤC LỤC (NẰM TRONG SIDEBAR) --- */
+.sidebar-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px; /* Ghim ở góc trên cùng bên phải của hộp mục lục */
+    width: 28px;
+    height: 28px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-close-btn:hover {
+    background-color: var(--danger-light);
+    color: var(--error); /* Đổi màu đỏ nhẹ khi di chuột vào nút đóng */
+    border-color: #cbd5e1;
+}
+
+/* --- RESPONSIVE CHO ĐIỆN THOẠI & TABLET (<= 992px) --- */
+@media (max-width: 992px) {
+    .tutorial-container { flex-direction: column; padding: 20px; }
+
+    .tf-sidebar-inner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 1000;
+        background: var(--danger-light);
+        box-shadow: var(--shadow-md);
+        transform: translateX(0);
+    }
+
+    .tf-sidebar-inner {
+        border: none;
+        height: 100%;
+        border-radius: 0;
+        padding: 50px 20px;
+        background: var(--bg-card);
+    }
+
+    /* Khi đóng trên mobile */
+    .tf-sidebar-inner.collapsed {
+        transform: translateX(-100%); /* Ẩn hoàn toàn khỏi view */
+        width: 280px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Đóng trên Mobile thì nút close to hơn cho dễ bấm bằng tay */
+    .sidebar-close-btn {
+        top: 20px;
+        right: 20px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
