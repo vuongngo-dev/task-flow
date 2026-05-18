@@ -1,0 +1,91 @@
+<div class="contact-advanced-wrapper">
+    
+    <header class="contact-header">
+        <span class="contact-pill">Trung tâm Phản hồi</span>
+        <h1 class="contact-title-large">Chúng tôi luôn lắng nghe bạn</h1>
+        <p class="contact-subtitle-large">Mọi ý kiến đóng góp, báo lỗi hoặc đề xuất hợp tác của bạn đều là động lực lớn để chúng tôi hoàn thiện hệ sinh thái TaskFlow mỗi ngày.</p>
+    </header>
+
+    <div class="contact-main-body">
+        
+        <section class="contact-details-column">
+            
+            <div class="support-card">
+                <div class="support-card-icon"><i class="fas fa-bug"></i></div>
+                <div class="support-card-text">
+                    <h3>Báo cáo lỗi & Hỗ trợ kỹ thuật</h3>
+                    <p>Nếu bạn gặp sự cố trong quá trình kiểm thử các tính năng (Lịch biểu, Pomodoro, Plan) hoặc giao diện bị vỡ, hãy gửi mô tả chi tiết kèm theo log trình duyệt (nếu có). Tôi sẽ ưu tiên xử lý các vấn đề này trong vòng 24h.</p>
+                </div>
+            </div>
+
+            <div class="support-card">
+                <div class="support-card-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="support-card-text">
+                    <h3>Đề xuất phát triển tính năng</h3>
+                    <p>Bạn nghĩ TaskFlow cần có thêm tính năng gì để tối ưu hơn? Đừng ngần ngại chia sẻ ý tưởng của bạn. Những ý tưởng đột phá sẽ được đưa vào lộ trình phát triển (Roadmap) của các phiên bản tiếp theo.</p>
+                </div>
+            </div>
+
+            <div class="support-card">
+                <div class="support-card-icon"><i class="fas fa-business-time"></i></div>
+                <div class="support-card-text">
+                    <h3>Thời gian phản hồi dự kiến</h3>
+                    <p>Hệ thống tiếp nhận thông tin tự động 24/7. Lời nhắn của bạn sẽ được rà soát trực tiếp và phản hồi qua Email cá nhân vào khung giờ làm việc: <strong>08:00 - 17:30 (Thứ 2 đến Thứ 6)</strong>.</p>
+                </div>
+            </div>
+
+            <div class="quick-meta-box">
+                <h4>Thông tin kênh gốc:</h4>
+                <p><i class="fas fa-envelope-open-text"></i> <strong>Hộp thư trực tiếp:</strong> vuongngo.dev@gmail.com</p>
+                <p><i class="fas fa-map-location-dot"></i> <strong>Vị trí vận hành:</strong> ĐH Công nghệ Sài Gòn, TP. Hồ Chí Minh, Việt Nam</p>
+            </div>
+        </section>
+
+        <section class="contact-form-column">
+            <div class="form-box-inner">
+                <h3 class="form-box-title">Gửi yêu cầu trực tuyến</h3>
+                <p class="form-box-desc">Vui lòng điền đầy đủ các thông tin dưới đây để tôi có thể hỗ trợ bạn một cách chính xác nhất.</p>
+                
+                <form class="advanced-contact-form" id="advancedContactForm" onsubmit="">
+                    
+                    <div class="form-row-twin">
+                        <div class="form-field">
+                            <label for="advName">Họ và tên của bạn *</label>
+                            <input type="text" id="advName" required placeholder="Ví dụ: Nguyễn Văn A">
+                        </div>
+                        <div class="form-field">
+                            <label for="advEmail">Địa chỉ Email nhận phản hồi *</label>
+                            <input type="email" id="advEmail" required placeholder="name@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="advType">Bạn đang cần liên hệ về vấn đề gì? *</label>
+                        <select id="advType" required>
+                            <option value="" disabled selected>-- Chọn phân loại yêu cầu --</option>
+                            <option value="bug">Phát hiện lỗi hệ thống (Bug Report)</option>
+                            <option value="feature">Đóng góp / Đề xuất tính năng mới</option>
+                            <option value="collab">Hợp tác phát triển mã nguồn</option>
+                            <option value="other">Hỏi đáp / Ý kiến khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="advSubject">Tiêu đề lời nhắn *</label>
+                        <input type="text" id="advSubject" required placeholder="Tóm tắt ngắn gọn mục đích liên hệ...">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="advMessage">Nội dung chi tiết *</label>
+                        <textarea id="advMessage" rows="6" required placeholder="Vui lòng mô tả rõ ràng nội dung, các bước xảy ra lỗi hoặc ý tưởng thiết kế của bạn..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-send-advanced">
+                        Xác nhận gửi thông tin <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+</div>
