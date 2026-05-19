@@ -123,3 +123,36 @@ body {
 .action-btn:hover { background-color: var(--border-color); color: var(--text-main); }
 .delete-btn:hover { color: var(--danger); }
 .mark-read-btn { color: var(--primary); font-size: 0.6rem; }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    /* Body không cần padding lớn */
+    body {
+        padding: 0;
+    }
+
+    /* Panel chiếm toàn màn hình */
+    .notifications-panel {
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+
+    /* Các nút action luôn hiện (trên mobile không có hover) */
+    .notif-actions {
+        opacity: 1;
+        position: static;
+        transform: none;
+    }
+
+    /* Nội dung bỏ padding-right thừa */
+    .notif-content {
+        padding-right: 0;
+    }
+
+    /* Thông báo bớt padding */
+    .notif-item {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+}

@@ -26,13 +26,44 @@ body {
 }
 
 .settings-header {
-    padding: 24px 32px;
+    padding: 20px 32px;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-body);
 }
 
-.settings-header h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 4px; }
-.settings-header p { font-size: 0.9rem; }
+/* Dòng trên cùng trong header: nút back + tiêu đề */
+.settings-header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+/* Nút quay lại */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.back-btn:hover {
+    background-color: var(--bg-card);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.settings-header h1 { font-size: 1.5rem; font-weight: 600; }
+.settings-header p { font-size: 0.9rem; margin-top: 4px; }
 
 /* BỐ CỤC CHIA CỘT */
 .settings-layout {
@@ -108,6 +139,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
+}
+
+/* Nhóm các nút trong row-item (ví dụ: Xuất/Nhập) */
+.setting-btn-group {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
 /* NÚT GẠT BẬT/TẮT (TOGGLE SWITCH) - Phong cách hiện đại */
@@ -173,3 +213,109 @@ input:checked + .slider:before { transform: translateX(20px); }
 .btn-text:hover { text-decoration: underline; }
 
 .setting-actions { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    /* Body giảm padding */
+    body {
+        padding: 12px;
+    }
+
+    /* Header nhỏ lại */
+    .settings-header {
+        padding: 14px 16px;
+    }
+
+    /* Header top: back button + tiêu đề xếp hàng ngang */
+    .settings-header-top {
+        gap: 10px;
+    }
+
+    .settings-header h1 {
+        font-size: 1.2rem;
+    }
+
+    /* Nút back nhỏ gọn hơn trên mobile */
+    .back-btn span {
+        display: none; /* Chỉ hiện icon mũi tên, ẩn chữ "Quay lại" */
+    }
+    .back-btn {
+        padding: 8px 10px;
+    }
+
+    /* Layout chia cột chuyển thành 1 cột dọc */
+    .settings-layout {
+        flex-direction: column;
+    }
+
+    /* Sidebar menu tab nằm ngang, có thể scroll */
+    .settings-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px;
+    }
+
+    .settings-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .setting-tab {
+        flex: 0 0 auto;
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        gap: 8px;
+    }
+
+    /* Nội dung settings giảm padding */
+    .settings-content {
+        padding: 16px;
+    }
+
+    /* Form input chiếm toàn chiều ngang */
+    .form-input, .form-select {
+        max-width: 100%;
+    }
+
+    /* Avatar setting xếp dọc */
+    .avatar-setting {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    /* Nút lưu chiếm toàn bộ */
+    .setting-actions {
+        justify-content: stretch;
+    }
+    .setting-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Row item (Xuất/Nhập) xếp dọc trên mobile */
+    .row-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Nhóm nút Xuất/Nhập chiếm full width */
+    .setting-btn-group {
+        width: 100%;
+    }
+    .setting-btn-group .btn {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        gap: 6px;
+    }
+
+    /* Nút danger trong row-item */
+    .row-item > .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -285,6 +285,13 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+    /* Toàn bộ layout về 1 cột */
+    .profile-container {
+        padding: 16px;
+        gap: 20px;
+    }
+
+    /* Sidebar user chiếm full width, xếp dọc giữa trang */
     .profile-sidebar {
         width: 100%;
         display: flex;
@@ -292,8 +299,34 @@ body {
         align-items: center;
         text-align: center;
     }
+
+    /* Avatar nhỏ lại */
     .profile-avatar-wrap {
-        width: 200px;
-        height: 200px;
+        width: 160px;
+        height: 160px;
+    }
+
+    /* Chỉ số profile nằm ngang */
+    .profile-stats-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    /* Pinned grid về 1 cột */
+    .pinned-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Biểu đồ đóng góp - cho phép scroll ngang */
+    .contribution-panel {
+        padding: 12px;
+        overflow-x: auto;
+    }
+
+    .graph-day {
+        width: 10px;
+        height: 10px;
     }
 }

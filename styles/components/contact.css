@@ -1,0 +1,235 @@
+/*
+==========================================================================
+FILE: contact.css
+DESCRIPTION: Styles cho trang liên hệ.
+==========================================================================
+*/
+
+.contact-advanced-wrapper {
+    font-family: var(--font-primary);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    position: relative;
+    color: var(--text-main);
+}
+
+/* --- 1. HERO HEADER (PHẦN TRÊN CÙNG) --- */
+.contact-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    box-sizing: var(--border-box);
+    animation: FadeDown var(--transition-normal);
+}
+
+.contact-title-large {
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.contact-subtitle-large {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+}
+
+/* --- 2. THÂN TRANG CHIA 2 CỘT --- */
+.contact-main-body {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    animation: FadeUp var(--transition-normal);
+}
+
+/* Cột thông tin bên trái */
+.contact-details-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.support-card {
+    display: flex;
+    gap: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.support-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.support-card-icon {
+    width: 44px;
+    height: 44px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.support-card-text h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.support-card-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.quick-meta-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.quick-meta-box h4 {
+    margin: 0 0 12px 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+}
+
+.quick-meta-box p {
+    margin: 0 0 8px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.quick-meta-box p:last-child { margin-bottom: 0; }
+.quick-meta-box i { color: var(--text-secondary); width: 20px; }
+
+/* Cột form bên phải */
+.contact-form-column {
+    flex: 1.2;
+    position: sticky;
+    top: 90px;
+}
+
+.form-box-inner {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 4px 20px -2px rgba(0,0,0,0.03);
+}
+
+.form-box-title {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 0 0 8px 0; font-weight: 700;
+}
+
+.form-box-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0 0 25px 0;
+}
+
+.advanced-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-row-twin {
+    display: flex;
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.form-field label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.form-field input, .form-field select, .form-field textarea {
+    padding: 11px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--primary);
+    background-color: var(--bg-input);
+    transition: all 0.2s ease;
+}
+
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: none;
+    border-color: var(--border-color);
+    background-color: var(--bg-input);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Nút Submit */
+.btn-send-advanced {
+    background-color: var(--primary);
+    color: var(--text-on-primary);
+    border: none;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+.btn-send-advanced:hover {
+    background-color: var(--primary-dark);
+}
+
+/* --- 3. RESPONSIVE ĐÁP ỨNG ĐIỆN THOẠI (<= 992px) --- */
+@media (max-width: 992px) {
+    .contact-title-large { font-size: 2.1rem; }
+    .contact-main-body {
+        flex-direction: column; /* Chuyển thành cấu trúc xếp dọc */
+        gap: 40px;
+    }
+    .contact-details-column, .contact-form-column {
+        width: 100%;
+    }
+    .form-row-twin {
+        flex-direction: column; /* Hai trường họ tên / email xếp dọc */
+        gap: 18px;
+    }
+    .form-box-inner { padding: 25px 20px; }
+}
+
+/* Animation */
+@keyframes FadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes FadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

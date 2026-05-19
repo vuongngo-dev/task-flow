@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/colors.css">
     <link rel="stylesheet" href="../styles/components/tasks.css">
+    <script src="../scripts/tasks.js" defer></script>
+    <script src="../scripts/global.js">applyTheme();</script>
 </head>
 <body>
     <div class="page-container">
@@ -15,7 +17,7 @@
                 <h1>Quản lý công việc</h1>
                 <p class="text-muted">Bạn có 3 công việc cần hoàn thành hôm nay.</p>
             </div>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" id="btn-add-task">
                 <i class="fas fa-plus"></i>
                 Thêm công việc
             </button>
@@ -24,11 +26,11 @@
         <div class="tasks-toolbar">
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm công việc...">
+                <input type="text" id="search-input" placeholder="Tìm kiếm công việc...">
             </div>
             
             <div class="toolbar-actions">
-                <select class="form-select">
+                <select class="form-select" id="filter-status">
                     <option value="all">Tất cả trạng thái</option>
                     <option value="todo">Chưa bắt đầu</option>
                     <option value="in-progress">Đang làm</option>
@@ -53,23 +55,47 @@
             </div>
         </div>
 
-        <main class="tasks-content">
-            <div class="task-card">
-                <div class="task-card-header">
-                    <span class="badge badge-warning">Đang làm</span>
-                    <button class="icon-btn"><i class="fas fa-ellipsis-h"></i></button>
+        <main class="tasks-content tasks-grid">
+            <!-- Danh sách công việc được render tự động bởi tasks.js từ localStorage -->
+        </main>
+    </div>
+
+    <!-- Modal Thêm Công Việc -->
+    <div id="task-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Thêm Công Việc Mới</h2>
+                <button class="close-modal-btn" id="btn-close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label>Tiêu đề</label>
+                    <input type="text" id="task-title" class="form-input" placeholder="Nhập tên công việc...">
                 </div>
-                <h3 class="task-title">Thiết kế UI cho trang Quản lý</h3>
-                <p class="task-desc">Sắp xếp lại layout và thẻ iframe cho đúng chuẩn HTML5.</p>
-                <div class="task-footer">
-                    <div class="task-meta">
-                        <span class="text-danger"><i class="fas fa-flag"></i> Cao</span>
-                        <span><i class="far fa-calendar"></i> 26 Th04</span>
+                <div class="input-group">
+                    <label>Mô tả chi tiết</label>
+                    <textarea id="task-desc" class="form-input" rows="3" placeholder="Chi tiết công việc..."></textarea>
+                </div>
+                <div class="modal-row">
+                    <div class="input-group">
+                        <label>Độ ưu tiên</label>
+                        <select id="task-priority" class="form-select">
+                            <option value="high">Cao</option>
+                            <option value="medium" selected>Trung bình</option>
+                            <option value="low">Thấp</option>
+                        </select>
                     </div>
-                    <div class="user-avatar-sm">V</div>
+                    <div class="input-group">
+                        <label>Ngày hết hạn</label>
+                        <input type="date" id="task-date" class="form-input">
+                    </div>
                 </div>
             </div>
-        </main>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-cancel-modal">Hủy</button>
+                <button class="btn btn-primary" id="btn-save-task">Lưu công việc</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

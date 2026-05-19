@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/colors.css">
     <link rel="stylesheet" href="../styles/components/pomodoro.css">
+    <script src="../scripts/pomodoro.js"></script>
+    <script src="../scripts/global.js">applyTheme();</script>
 </head>
 <body>
     <div class="fluent-container">
@@ -85,88 +87,5 @@
 
         </div>
     </div>
-
-    <script>
-        const timeLeftDisplay = document.getElementById('time-left');
-        const timerStatus = document.getElementById('timer-status');
-        const timerPath = document.getElementById('timer-path');
-        const btnPlay = document.getElementById('btn-play');
-        const playIcon = document.getElementById('play-icon');
-        const btnReset = document.getElementById('btn-reset');
-        const tabBtns = document.querySelectorAll('.tab-btn');
-
-        let isRunning = false;
-        let timerInterval;
-        let totalTime = 25 * 60; 
-        let timeLeft = totalTime;
-
-        // Bán kính giờ là 48 (sát viền SVG chuẩn Windows)
-        const CIRCUMFERENCE = 2 * Math.PI * 48;
-        timerPath.style.strokeDasharray = CIRCUMFERENCE;
-
-        function updateDisplay() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timeLeftDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            const progress = timeLeft / totalTime;
-            const dashoffset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
-            timerPath.style.strokeDashoffset = dashoffset;
-        }
-
-        function toggleTimer() {
-            if (isRunning) {
-                clearInterval(timerInterval);
-                playIcon.className = 'fas fa-play';
-                timerStatus.textContent = 'Đã tạm dừng';
-            } else {
-                timerInterval = setInterval(() => {
-                    timeLeft--;
-                    updateDisplay();
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        timerStatus.textContent = 'Hết giờ!';
-                        isRunning = false;
-                        playIcon.className = 'fas fa-play';
-                    }
-                }, 1000);
-                playIcon.className = 'fas fa-pause';
-                timerStatus.textContent = 'Đang tập trung...';
-            }
-            isRunning = !isRunning;
-        }
-
-        function resetTimer() {
-            clearInterval(timerInterval);
-            isRunning = false;
-            timeLeft = totalTime;
-            playIcon.className = 'fas fa-play';
-            timerStatus.textContent = 'Sẵn sàng';
-            updateDisplay();
-        }
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                totalTime = parseInt(btn.getAttribute('data-time')) * 60;
-                resetTimer();
-                
-                if (btn.textContent === 'Tập trung') {
-                    document.documentElement.style.setProperty('--pomo-color', 'var(--primary)');
-                } else if (btn.textContent === 'Nghỉ ngắn') {
-                    document.documentElement.style.setProperty('--pomo-color', 'var(--success)');
-                } else {
-                    document.documentElement.style.setProperty('--pomo-color', 'var(--warning)');
-                }
-            });
-        });
-
-        btnPlay.addEventListener('click', toggleTimer);
-        btnReset.addEventListener('click', resetTimer);
-        document.getElementById('btn-skip').addEventListener('click', () => { timeLeft = 0; updateDisplay(); });
-
-        updateDisplay();
-    </script>
 </body>
 </html>

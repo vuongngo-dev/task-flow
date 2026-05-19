@@ -1,0 +1,171 @@
+/*
+==========================================================================
+FILE: index.css
+DESCRIPTION: Styles cho trang chủ.
+==========================================================================
+*/
+
+@import './../colors.css';
+
+/* Global Styles */
+body {
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    overflow-x: hidden;
+    transition: var(--transition-normal);
+    animation: FadeDown var(--transition-normal);
+}
+
+/* Header Styles */
+header {
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    order: 1; /* Luôn xếp đầu tiên bên trái */
+}
+
+.brand a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.brand a:active {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+/* Xóa ranh giới hộp của thẻ nav để Header điều khiển các nút và link */
+.nav {
+    display: contents;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-login {
+    order: 2; /* Xếp ngay sau Brand */
+    margin-left: auto; /* Mấu chốt: Đẩy nút này và menu toggle sát mép phải */
+    margin-right: 12px;
+    padding: 8px 16px;
+    
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.btn-login:hover {
+    background-color: var(--border-hover);
+}
+
+.menu-toggle {
+    order: 3; /* Xếp ngoài cùng bên phải */
+    padding: 8px 12px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+/* Link điều hướng */
+.nav a:not(.btn) {
+    order: 4; /* Bị ép rớt xuống hàng dưới cùng */
+    width: 100%; /* Chiếm toàn bộ không gian để tạo danh sách dọc */
+    display: none; /* Ẩn mặc định trên di động */
+    
+    padding: 16px 0;
+    margin: 0;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-bottom: 1px solid var(--border-color);
+    animation: FadeUp var(--transition-normal);
+}
+
+.nav a:not(.btn):hover {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.nav a:not(.btn):last-of-type {
+    border-bottom: none;
+}
+
+/* Khi Javascript kích hoạt hàm activeMenu() */
+.nav.active a:not(.btn) {
+    display: block;
+    animation: FadeDown var(--transition-normal);
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Ẩn nút gạch ngang */
+    }
+    
+    .btn-login {
+        order: 4; /* Đẩy nút đăng nhập ra xa nhất bên phải */
+        margin-left: 20px;
+        margin-right: 0;
+        padding: 12px 24px; /* Nút to ra trên Desktop */
+    }
+
+    .nav a:not(.btn) {
+        display: inline-block; /* Hiển thị các link thành hàng ngang */
+        order: 2; /* Chèn link vào giữa Brand và nút Đăng nhập */
+        width: auto; /* Hủy lệnh chiếm 100% màn hình */
+        border-bottom: none;
+        padding: 0;
+        margin-left: 25px; /* Khoảng cách giữa các link */
+    }
+    
+    /* Đẩy cụm link này dạt về bên phải, nằm gần nút Đăng nhập */
+    .nav a:not(.btn):nth-child(3) { 
+        margin-left: auto;
+    }
+}
+
+/* Footer Styles */
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Animation Styles */
+@keyframes FadeUp {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes FadeDown {
+    from { opacity: 1; transform: translateY(-10px); }
+    to { opacity: 0; transform: translateY(0px); }
+}

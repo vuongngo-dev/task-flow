@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/colors.css">
     <link rel="stylesheet" href="../styles/components/dashboard.css">
+    <script src="../scripts/dashboard.js" defer></script>
+    <script src="../scripts/global.js">applyTheme();</script>
 </head>
 
 <body>
@@ -18,29 +20,31 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <h2 class="brand">
-                    <i class="fas fa-check-circle"></i>
-                    Task Flow
+                    <a href="./dashboard.html">
+                        <i class="fas fa-check-circle"></i>
+                        Task Flow
+                    </a>
                 </h2>
             </div>
 
             <nav class="sidebar-nav">
                 
-                <a href="./statistics.html" target="content-frame" class="nav-item active">
+                <a href="./statistics.html" target="content-frame" class="nav-item active" title="Trang chủ">
                     <i class="fas fa-home"></i>
                     <span class="nav-label">Trang chủ</span>
                 </a>
                 
-                <a href="../pages/tasks.html" target="content-frame" class="nav-item">
+                <a href="../pages/tasks.html" target="content-frame" class="nav-item" title="Công việc">
                     <i class="fas fa-tasks"></i>
                     <span class="nav-label">Công việc</span>
                 </a>
                 
-                <a href="./pomodoro.html" target="content-frame" class="nav-item">
+                <a href="./pomodoro.html" target="content-frame" class="nav-item" title="Pomodoro">
                     <i class="fas fa-clock"></i>
                     <span class="nav-label">Pomodoro</span>
                 </a>
 
-                <a href="./calendar.html" target="content-frame" class="nav-item">
+                <a href="./calendar.html" target="content-frame" class="nav-item" title="Lịch">
                     <i class="fas fa-calendar"></i>
                     <span class="nav-label">Lịch</span>
                 </a>
@@ -58,10 +62,10 @@
                     </div>
                     
                     <div class="user-actions">
-                        <button class="action-btn" title="Cài đặt hệ thống">
+                        <button class="action-btn" onclick="window.location.href='./settings.html'" title="Cài đặt hệ thống">
                             <i class="fas fa-cog"></i>
                         </button>
-                        <button class="action-btn logout-btn" title="Đăng xuất">
+                        <button class="action-btn logout-btn" onclick="window.location.href='../index.html'" title="Đăng xuất">
                             <i class="fas fa-sign-out-alt"></i>
                         </button>
                     </div>
@@ -69,8 +73,15 @@
             </div>
         </aside>
 
+        <!-- Overlay mờ khi sidebar mở trên mobile -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
         <main class="main-content">
             <header class="main-header">
+                <!-- Nút hamburger chỉ hiện trên mobile -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Mở menu">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <h1>Tổng quan Dashboard</h1>
 
                 <nav class="header-nav">

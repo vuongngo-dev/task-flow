@@ -19,12 +19,12 @@ DESCRIPTION: Style trang trung tâm điều khiển
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-family: var(--font-sans);
     background-color: var(--bg-body);
     color: var(--text-main);
     line-height: 1.5;
     height: 100vh;
-    overflow: hidden; /* Chỉ cuộn phần content bên trong */
+    overflow: hidden;
     transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
@@ -41,7 +41,9 @@ button {
 /* --- 2. BỐ CỤC CHÍNH (APP SHELL) --- */
 .app-shell {
     display: flex;
+    width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 /* --- 3. SIDEBAR --- */
@@ -52,7 +54,56 @@ button {
     display: flex;
     flex-direction: column;
     transition: width var(--transition-normal), transform var(--transition-normal);
-    z-index: 10;
+    flex-shrink: 0;
+}
+
+/* --- TRẠNG THÁI SIDEBAR KHI BỊ THU NHỎ (COLLAPSED) --- */
+.sidebar.active {
+    width: 80px;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+/* Ẩn brand khi thu nhỏ để icon menu được căn giữa */
+.sidebar.collapsed .brand {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
+    padding: 0;
+}
+
+/* Ẩn nhãn chữ của các menu item */
+.sidebar.collapsed .nav-label {
+    display: none;
+}
+
+/* Căn giữa lại các icon menu khi sidebar bị thu nhỏ */
+.sidebar.collapsed .nav-item {
+    justify-content: center;
+    padding: 12px 0;
+}
+.sidebar.collapsed .nav-item i {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.sidebar.collapsed .sidebar-user {
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.sidebar.collapsed .user-profile {
+    justify-content: center;
+    width: 100%;
+}
+
+.sidebar.collapsed .sidebar-user-info,
+.sidebar.collapsed .user-actions {
+    display: none;
 }
 
 .sidebar-header {
@@ -212,10 +263,10 @@ button {
 
 /* --- 4. MAIN CONTENT & HEADER --- */
 .main-content {
-    flex: 1;
+    flex-grow: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .main-header {
@@ -288,19 +339,110 @@ button {
     box-shadow: var(--shadow-sm);
 }
 
-/* --- 6. RESPONSIVE BƠM CHO MOBILE --- */
+/* --- 6. MOBILE MENU BUTTON (ẩn trên desktop, hiện trên mobile) --- */
+.mobile-menu-toggle {
+    display: none; /* Ẩn mặc định trên Desktop */
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.3rem;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.mobile-menu-toggle:hover {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+/* Lớp phủ mờ đằng sau sidebar khi mở trên mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0; /* top: 0, right: 0, bottom: 0, left: 0 */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99; /* Dưới sidebar (z-index: 100) nhưng trên nội dung */
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* --- 7. RESPONSIVE - MOBILE (max-width: 768px) --- */
 @media (max-width: 768px) {
+    /* Sidebar chuyển sang fixed, ẩn sang trái màn hình */
     .sidebar {
         position: fixed;
+        top: 0;
+        left: 0;
         height: 100%;
+        z-index: 100;
         transform: translateX(-100%);
-    }
-    
-    .sidebar.open {
-        transform: translateX(0);
+        width: 260px !important; /* Luôn hiện đầy đủ khi mở */
     }
 
+    /* Khi sidebar được mở (class .open do JS thêm vào) */
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hiện nút hamburger menu */
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Tiêu đề nhỏ lại trên mobile */
     .main-header {
         padding: 0 16px;
+        gap: 12px;
+    }
+
+    .main-header h1 {
+        font-size: 1.1rem;
+        flex: 1;
+    }
+
+    /* Giảm padding nội dung */
+    .dashboard-content {
+        padding: 8px;
+    }
+}
+
+/* --- 8. RESPONSIVE - TABLET (max-width: 1024px) --- */
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Thu nhỏ sidebar thành icon-only trên tablet */
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar .brand {
+        display: none;
+    }
+    .sidebar .sidebar-header {
+        justify-content: center;
+        padding: 0;
+    }
+    .sidebar .nav-label {
+        display: none;
+    }
+    .sidebar .nav-item {
+        justify-content: center;
+        padding: 12px 0;
+    }
+    .sidebar .nav-item i {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+    .sidebar .sidebar-user-info,
+    .sidebar .user-actions {
+        display: none;
+    }
+    .sidebar .sidebar-user {
+        justify-content: center;
+        padding: 10px 0;
     }
 }

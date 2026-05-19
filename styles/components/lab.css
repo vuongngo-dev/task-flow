@@ -1,0 +1,153 @@
+/* ==========================================================================
+   CSS DÀNH RIÊNG CHO PHÂN HỆ DANH SÁCH BÀI TẬP (EXERCISES GRID)
+   ========================================================================== */
+
+.exercises-container {
+    font-family: var(--font-sans);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    color: var(--text-secondary);
+}
+
+/* --- HEADER --- */
+.ex-header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: FadeDown var(--transition-normal);
+}
+
+.ex-main-title {
+    font-size: 2.4rem;
+    color: var(--text-main);
+    font-weight: 800;
+    margin: 0 0 12px 0;
+}
+
+.ex-lead-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* --- LƯỚI THẺ BÀI TẬP (GRID) --- */
+.exercises-grid {
+    display: grid;
+    /* Tự động tính toán số cột: Tối thiểu 320px/thẻ, tự động tràn đầy hàng */
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    animation: FadeUp var(--transition-normal);
+}
+
+/* --- THẺ BÀI TẬP CHÂN THỰC --- */
+.ex-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+/* Hiệu ứng khi hover chuột vào thẻ */
+.ex-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.ex-card:hover .ex-card-icon {
+    background-color: var(--bg-input);
+    color: var(--primary);
+    border-color: var(--border-hover);
+}
+
+.ex-card:hover .ex-card-arrow {
+    color: var(--primary);
+    transform: translateX(3px);
+}
+
+/* Thành phần bên trong thẻ */
+.ex-card-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.ex-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.ex-number {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.ex-card-content h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.ex-card-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    /* Giới hạn mô tả trong 2 dòng, quá ký tự sẽ tự sinh dấu ba chấm */
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.ex-card-arrow {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+/* --- ĐÁP ỨNG ĐIỆN THOẠI (<= 480px) --- */
+@media (max-width: 480px) {
+    .ex-main-title {
+        font-size: 1.8rem;
+    }
+    .exercises-grid {
+        grid-template-columns: 1fr;
+    } /* Ép thành 1 cột */
+    .ex-card {
+        padding: 18px;
+        gap: 15px;
+    }
+}
+
+/* Animation */
+@keyframes FadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes FadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
