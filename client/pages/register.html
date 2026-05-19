@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/colors.css">
     <link rel="stylesheet" href="../styles/components/login.css">
+    <!-- Module xác thực dựa trên localStorage -->
+    <script src="../scripts/authentication.js"></script>
+    <script>
+        // Nếu đã đăng nhập rồi → tự chuyển sang Dashboard
+        (function () {
+            const session = localStorage.getItem('taskflow_session');
+            if (session) window.location.href = './dashboard.html';
+        })();
+    </script>
 </head>
 <body>
     <div class="login-card">
@@ -15,45 +24,89 @@
         <h2>Chào mừng đến với Task Flow</h2>
         <p>Đăng ký để bắt đầu sử dụng Task Flow</p>
 
-        <!-- Form đăng nhập -->
-        <form action="" method="POST">        
-        <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text" id="username" placeholder="Tên đăng nhập" required>
-        </div>
+        <!-- Thông báo lỗi / thành công -->
+        <div id="register-error" class="auth-error" style="display:none;"></div>
 
-        <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email" id="email" placeholder="Email" required>
-        </div>
+        <!-- Form đăng ký -->
+        <form id="register-form" novalidate>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="reg-username" placeholder="Tên đăng nhập (tối thiểu 3 ký tự)" required autocomplete="username">
+            </div>
 
-        <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="password" placeholder="Mật khẩu" required>
-        </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="reg-email" placeholder="Email (tuỳ chọn)" autocomplete="email">
+            </div>
 
-        <div class="input-group">
-            <i class="fas fa-key"></i>
-            <input type="password" id="confirm-password" placeholder="Xác nhận mật khẩu" required>
-        </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="reg-password" placeholder="Mật khẩu (tối thiểu 6 ký tự)" required autocomplete="new-password">
+            </div>
 
-        <button class="register-btn" onclick="">Đăng ký</button>
+            <div class="input-group">
+                <i class="fas fa-key"></i>
+                <input type="password" id="reg-confirm" placeholder="Xác nhận mật khẩu" required autocomplete="new-password">
+            </div>
 
-        <div class="footer-links">
-            Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a>
-        </div>
+            <button class="register-btn" id="register-submit" type="submit">
+                <span id="register-btn-text">Đăng ký</span>
+            </button>
 
-        <span class="divider">hoặc</span>
+            <div class="footer-links">
+                Đã có tài khoản? <a href="./login.html">Đăng nhập ngay</a>
+            </div>
 
-        <!-- Liên kết tiếp tục dùng thử -->
-        <a href="dashboard.html" class="guest-mode"> tiếp tục dùng thử (Khách)</a>
+            <span class="divider">hoặc</span>
+
+            <!-- Tiếp tục dùng thử không cần tài khoản -->
+            <a href="./dashboard.html" class="guest-mode">
+                <i class="fas fa-user-slash"></i> Tiếp tục dùng thử (Khách)
+            </a>
         </form>
 
         <!-- Footer -->
         <footer class="footer">
             <p>&copy; 2026 Ngô Đức Vương - Dự án IT Portfolio</p>
         </footer>
-        
     </div>
+
+    <script>
+        // Xử lý submit form đăng ký
+        document.getElementById('register-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById('reg-username').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const confirm  = document.getElementById('reg-confirm').value;
+            const errorBox = document.getElementById('register-error');
+            const submitBtn = document.getElementById('register-submit');
+            const btnText = document.getElementById('register-btn-text');
+
+            // Hiện trạng thái loading
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+            errorBox.style.display = 'none';
+
+            setTimeout(function () {
+                const result = Auth.register(username, password, confirm);
+
+                if (result.ok) {
+                    // Đăng ký thành công → tự động đăng nhập luôn
+                    Auth.login(username, password);
+                    btnText.innerHTML = '<i class="fas fa-check"></i> Thành công!';
+                    setTimeout(function () {
+                        window.location.href = './dashboard.html';
+                    }, 400);
+                } else {
+                    // Hiện thông báo lỗi
+                    errorBox.textContent = result.error;
+                    errorBox.style.display = 'block';
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Đăng ký';
+                }
+            }, 300);
+        });
+    </script>
 </body>
 </html>
