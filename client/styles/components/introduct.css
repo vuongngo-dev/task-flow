@@ -5,6 +5,8 @@ DESCRIPTION: Styles cho trang giới thiệu.
 ==========================================================================
 */
 
+@import './../colors.css';
+
 /* 1. Reset & General */
 body {
     margin: 0;

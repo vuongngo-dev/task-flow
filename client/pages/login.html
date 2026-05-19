@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/colors.css">
     <link rel="stylesheet" href="../styles/components/login.css">
+    <!-- Module xác thực dựa trên localStorage -->
+    <script src="../scripts/authentication.js"></script>
+    <script>
+        // Nếu đã đăng nhập rồi → tự chuyển sang Dashboard
+        (function () {
+            const session = localStorage.getItem('taskflow_session');
+            if (session) window.location.href = './dashboard.html';
+        })();
+    </script>
 </head>
 <body>
     <div class="login-card">
@@ -15,35 +24,79 @@
         <h2>Chào mừng trở lại</h2>
         <p>Đăng nhập để đồng bộ các tác vụ của bạn</p>
 
+        <!-- Thông báo lỗi (ẩn mặc định) -->
+        <div id="login-error" class="auth-error" style="display:none;"></div>
+
         <!-- Form đăng nhập -->
-        <form action="" method="POST">
-        <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text" id="username" placeholder="Tên đăng nhập" required>
-        </div>
+        <form id="login-form" novalidate>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="login-username" placeholder="Tên đăng nhập" required autocomplete="username">
+            </div>
 
-        <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="password" placeholder="Mật khẩu" required>
-        </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="login-password" placeholder="Mật khẩu" required autocomplete="current-password">
+            </div>
 
-        <button class="login-btn" onclick="">Đăng nhập</button>
+            <button class="login-btn" id="login-submit" type="submit">
+                <span id="login-btn-text">Đăng nhập</span>
+            </button>
 
-        <div class="footer-links">
-            Chưa có tài khoản? <a href="./register.html">Đăng ký ngay</a>
-        </div>
+            <div class="footer-links">
+                Chưa có tài khoản? <a href="./register.html">Đăng ký ngay</a>
+            </div>
 
-        <span class="divider">hoặc</span>
+            <span class="divider">hoặc</span>
 
-        <!-- Liên kết tiếp tục dùng thử -->
-        <a href="./dashboard.html" class="guest-mode"> tiếp tục dùng thử (Khách)</a>
+            <!-- Tiếp tục dùng thử không cần tài khoản -->
+            <a href="./dashboard.html" class="guest-mode">
+                <i class="fas fa-user-slash"></i> Tiếp tục dùng thử (Khách)
+            </a>
         </form>
 
         <!-- Footer -->
         <footer class="footer">
             <p>&copy; 2026 Ngô Đức Vương - Dự án IT Portfolio</p>
         </footer>
-        
     </div>
+
+    <script>
+        // Xử lý submit form đăng nhập
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Ngăn reload trang
+
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+            const errorBox = document.getElementById('login-error');
+            const submitBtn = document.getElementById('login-submit');
+            const btnText = document.getElementById('login-btn-text');
+
+            // Hiện trạng thái loading
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+            errorBox.style.display = 'none';
+
+            // Dùng setTimeout nhỏ để UI kịp cập nhật trước khi xử lý
+            setTimeout(function () {
+                const result = Auth.login(username, password);
+
+                if (result.ok) {
+                    // Đăng nhập thành công → chuyển đến Dashboard
+                    btnText.innerHTML = '<i class="fas fa-check"></i> Thành công!';
+                    setTimeout(function () {
+                        window.location.href = './dashboard.html';
+                    }, 400);
+                } else {
+                    // Hiện thông báo lỗi
+                    errorBox.textContent = result.error;
+                    errorBox.style.display = 'block';
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Đăng nhập';
+                    document.getElementById('login-password').focus();
+                }
+            }, 300);
+        });
+    </script>
 </body>
 </html>
