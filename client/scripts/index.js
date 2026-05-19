@@ -1,3 +1,8 @@
+// ==========================================================================
+// FILE: client/scripts/index.js
+// DESCRIPTION: Script chính cho trang index, xử lý điều hướng và tải nội dung động
+// ==========================================================================
+
 function toggleMenu() {
     var menuToggle = document.getElementById('btn menu-toggle');
     var nav = document.getElementById('navigation');
@@ -27,7 +32,7 @@ function loadPage(htmlUrl, cssUrl) {
         .then(html => {
             document.getElementById('main-content').innerHTML = html;
             
-            // Đóng menu trên mobile sau khi click (nếu menu đang mở)
+            // Đóng menu sau khi click (nếu menu đang mở)
             var nav = document.getElementById('navigation');
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');
@@ -36,4 +41,18 @@ function loadPage(htmlUrl, cssUrl) {
         .catch(error => {
             document.getElementById('main-content').innerHTML = "<h2>Lỗi 404: Không tìm thấy trang!</h2>";
         });
+}
+
+function toggleSidebarTutorial() {
+    const tfSidebar = document.getElementById('tfSidebar');
+    // Kiểm tra nếu phần tử tồn tại trên trang thì mới xử lý
+    if (tfSidebar) {
+        if (tfSidebar.classList.contains('collapsed')) {
+            tfSidebar.className = 'tf-sidebar-inner';
+            console.log('Mở sidebar');
+        } else {
+            tfSidebar.className = 'tf-sidebar-inner collapsed';
+            console.log('Đóng sidebar');
+        }
+    }
 }

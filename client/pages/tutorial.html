@@ -1,0 +1,69 @@
+<div class="tutorial-container">
+
+    <div class="tf-sidebar-inner" id="tfSidebar">
+        <button class="sidebar-close-btn" id="btnCloseSidebar" onclick="toggleSidebarTutorial()" title="Đóng mục lục">
+            <i class="fa-solid fa-angle-left"></i>
+        </button>
+
+        <h3 class="tf-sidebar-title">Nội dung Hướng dẫn</h3>
+        <ul class="tf-nav-list">
+            <li><a href="#quan-ly-task" class="tf-link"><i class="fa-solid fa-list-check"></i> Quản lý Task</a></li>
+            <li><a href="#lich-bieu" class="tf-link"><i class="fa-solid fa-calendar-days"></i> Lịch biểu</a></li>
+            <li><a href="#pomodoro" class="tf-link"><i class="fa-solid fa-stopwatch"></i> Pomodoro</a></li>
+            <li><a href="#lap-ke-hoach" class="tf-link"><i class="fa-solid fa-map-location-dot"></i> Lập Kế hoạch</a></li>
+        </ul>
+    </div>
+
+    <main class="tf-main-content">
+        <header class="tf-header">
+            <h1 class="tf-main-title">Hướng dẫn sử dụng TaskFlow</h1>
+            <p class="tf-lead-text">Chào mừng bạn đến với không gian tài liệu của TaskFlow. Hãy theo dõi các mục bên dưới để làm quen với hệ sinh thái công cụ tối ưu hóa hiệu suất cá nhân.</p>
+        </header>
+
+        <section id="quan-ly-task" class="tf-section">
+            <h2><i class="fas fa-list-check"></i> 1. Quản lý Tác vụ (Task CRUD)</h2>
+            <p>Trọng tâm của TaskFlow là khả năng kiểm soát danh sách việc cần làm thông qua các thao tác trực quan:</p>
+            <ul class="tf-feature-list">
+                <li><strong>Khởi tạo:</strong> Nhấn nút <code>+ Thêm công việc</code>, điền tiêu đề, mô tả và gán nhãn phân loại.</li>
+                <li><strong>Mức độ ưu tiên:</strong> Đánh dấu các mốc từ <em>Thấp</em>, <em>Trung bình</em> đến <em class="priority-high">Cao</em> để sắp xếp thứ tự xử lý.</li>
+                <li><strong>Cập nhật trạng thái:</strong> Click vào ô Checkbox để đánh dấu hoàn thành, hoặc chuyển trạng thái để theo dõi tiến độ công việc.</li>
+                <li><strong>Xóa tác vụ:</strong> Sử dụng biểu tượng thùng rác đối với các tác vụ nhập sai hoặc không còn giá trị sử dụng.</li>
+            </ul>
+        </section>
+
+        <hr class="tf-divider">
+
+        <section id="lich-bieu" class="tf-section">
+            <h2><i class="fa-solid fa-calendar-days"></i> 2. Quản lý Lịch biểu (Calendar)</h2>
+            <p>Phân hệ Lịch biểu cung cấp một góc nhìn tổng quan theo thời gian (Ngày, Tuần, Tháng) để bạn không bỏ lỡ bất kỳ cột mốc quan trọng nào:</p>
+            <ol class="tf-steps">
+                <li>Giao diện tự động đồng bộ tất cả các Task có thiết lập <strong>Hạn chót (Deadline)</strong> lên các ô ngày tương ứng trên lịch.</li>
+                <li>Bạn có thể click trực tiếp vào một ngày trên lịch để khởi tạo nhanh một sự kiện hoặc công việc mới tại khung giờ đó.</li>
+            </ul>
+        </section>
+
+        <hr class="tf-divider">
+
+        <section id="pomodoro" class="tf-section">
+            <h2><i class="fa-solid fa-stopwatch"></i> 3. Phương pháp Tập trung Pomodoro</h2>
+            <p>Ứng dụng tích hợp bộ đếm giờ Pomodoro giúp bạn duy trì trạng thái tập trung cao độ và ngăn ngừa sự mệt mỏi:</p>
+            <div class="tf-note">
+                <strong>Chu kỳ chuẩn:</strong> 25 phút tập trung (Work) ➔ 5 phút nghỉ ngắn (Short Break).
+            </div>
+        </section>
+
+        <hr class="tf-divider">
+
+        <section id="lap-ke-hoach" class="tf-section">
+            <h2><i class="fas fa-map-location-dot"></i> 4. Lập Kế hoạch Dài hạn (Plan)</h2>
+            <p>Tính năng Plan giúp bạn định hình các mục tiêu lớn theo Tuần, Tháng hoặc Quý:</p>
+            <ul class="tf-feature-list">
+                <li><strong>Theo dõi Tiến độ:</strong> Hệ thống tự động tính toán phần trăm (%) hoàn thành dựa trên số lượng Task nhỏ đã giải quyết.</li>
+            </ul>
+        </section>
+
+        <button class="tf-toggle-btn" id="toggleSidebarBtn" onclick="toggleSidebarTutorial()" title="Ẩn/Hiện mục lục">
+        <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+    </main>
+</div>
