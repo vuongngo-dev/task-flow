@@ -6,15 +6,33 @@
     <title>Task Flow | Giới thiệu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/colors.css">
-    <link rel="stylesheet" href="styles/components/introduct.css">
+    <link rel="stylesheet" href="styles/components/index.css">
+    <link rel="stylesheet" id="dynamic-css" href="">
+    <script src="scripts/index.js"></script>
 </head>
 <body>
+    <div class="container">
+        <!-- Header với điều hướng -->
+        <header>
+            <div class="brand"><i class="fas fa-clipboard"></i> Task Flow</div>
+            <nav class="nav" id="navigation">
+                <a href="./pages/login.html" class="btn btn-login">Đăng nhập</a>
+                <a href="#" class="btn menu-toggle" id="btn menu-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <a href="#introduct" onclick="loadPage('pages/introduct.html', 'styles/components/introduct.css')">Trang chủ</a>
+                <a href="#help" onclick="loadPage('pages/tutorial.html', 'styles/components/tutorial.css')">Cách dùng</a>
+                <a href="#contact" onclick="loadPage('pages/contact.html', 'styles/components/contact.css')">Liên hệ</a>
+                <a href="#lab" onclick="loadPage('pages/lab.html', 'styles/components/lab.css')">Lab Thực hành</a>
+            </nav>  
+        </header>
 
+<<<<<<< HEAD
     <!-- Header với điều hướng -->
     <header class="intro-header">
         <div class="brand">Task Flow</div>
         <nav aria-label="Điều hướng trang giới thiệu">
-            <a href="index.html">Trang chủ</a>
+            <a href="./index.html">Trang chủ</a>
             <a href="#how-to-use">Cách dùng</a>
             <a href="#contact">Liên hệ</a>
             <a href="./pages/login.html" class="btn btn-secondary">Đăng nhập</a>
@@ -116,10 +134,16 @@
                 </div>
             </div>
         </section>
+=======
+        <!-- Nội dung chính -->
+        <main id="main-content">
+        </main>
+>>>>>>> feature/introduct
 
+        <!-- Footer -->
         <footer class="footer">
             <p>&copy; 2026 Ngô Đức Vương - Dự án IT Portfolio</p>
         </footer>
-    </main>
+    </div>
 </body>
 </html>
