@@ -20,13 +20,13 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
 
 /* --- THANH MỤC LỤC CHÍNH --- */
 .tf-sidebar-inner {
+    text-align: center;
     width: 260px;
     flex-shrink: 0;
     position: sticky;
     top: 90px;
     height: fit-content;
     opacity: 1;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     animation: FadeUp var(--transition-normal);
 }
 
@@ -35,7 +35,6 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 20px;
-    position: relative; /* Làm gốc tọa độ cho nút đóng bên trong */
 }
 
 .tf-sidebar-title {
@@ -95,6 +94,7 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
     animation: FadeUp var(--transition-normal);
 }
 .tf-header {
+    text-align: center;
     margin-bottom: 40px;
     animation: FadeDown var(--transition-normal);
 }

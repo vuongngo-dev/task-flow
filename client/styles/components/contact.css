@@ -10,7 +10,8 @@ DESCRIPTION: Styles cho trang liên hệ.
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px 80px;
-    color: var(--text-secondary);
+    position: relative;
+    color: var(--text-main);
 }
 
 /* --- 1. HERO HEADER (PHẦN TRÊN CÙNG) --- */
@@ -18,35 +19,19 @@ DESCRIPTION: Styles cho trang liên hệ.
     text-align: center;
     max-width: 800px;
     margin: 0 auto 50px;
+    box-sizing: var(--border-box);
     animation: FadeDown var(--transition-normal);
-}
-
-.contact-pill {
-    background-color: #eff6ff;
-    color: var(--primary);
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: inline-block;
-    margin-bottom: 15px;
 }
 
 .contact-title-large {
     font-size: 2.6rem;
+    font-weight: bold;
     color: var(--text-primary);
-    font-weight: 800;
-    margin: 0 0 15px 0;
-    letter-spacing: -0.02em;
 }
 
 .contact-subtitle-large {
     font-size: 1.15rem;
-    line-height: 1.6;
     color: var(--text-secondary);
-    margin: 0;
 }
 
 /* --- 2. THÂN TRANG CHIA 2 CỘT --- */
