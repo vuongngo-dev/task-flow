@@ -1,0 +1,52 @@
+/* hmenu */
+.hmenu {
+    display: flex;
+    list-style: none;
+    background-color: rgb(28, 102, 102);
+    min-height: 40px;
+    border-radius: 10px;
+}
+
+.hmenu li {
+    line-height: 10px;
+    margin: 10px;
+}
+
+.hmenu li a {
+    color: azure;
+    text-decoration: none;
+}
+
+.hmenu li:hover {
+    padding: 3px;
+    border-radius: 10px;
+}
+
+/* vmenu */
+.vmenu {
+    display: block;
+    list-style: none;
+    background-color: rgb(28, 102, 102);
+    padding: 1px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.vmenu li {
+    line-height: 10px;
+    height: 15px;
+    margin: 30px;
+    border-bottom: 1px solid white;
+}
+
+.vmenu li a {
+    color: azure;
+    text-align: center;
+    text-decoration: none;
+}
+
+.vmenu li:hover {
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
