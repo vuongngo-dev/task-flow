@@ -42,13 +42,8 @@ HỆ THỐNG MÀU CHO TASK FLOW
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
-<<<<<<< HEAD
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-=======
     --transition-fast: 0.2s ease-in-out;
     --transition-normal: 0.3s ease-in-out;
->>>>>>> feature/introduct
 
     /* Font */
     --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
