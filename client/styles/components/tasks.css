@@ -261,3 +261,170 @@ body {
     font-size: 0.8rem;
     font-weight: bold;
 }
+
+/* --- 5. MODAL THÊM CÔNG VIỆC --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.close-modal-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.close-modal-btn:hover { color: var(--danger); }
+
+.modal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-input {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.modal-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.btn-outline:hover {
+    background-color: var(--bg-input);
+}
+
+/* --- 6. RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    /* Panel co lại để không bị overflow */
+    .dashboard-panel {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    /* Thanh toolbar xếp dọc trên mobile */
+    .tasks-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    /* Thanh tìm kiếm chiếm toàn bộ chiều ngang */
+    .search-box {
+        min-width: unset;
+        max-width: 100%;
+    }
+
+    /* Nhóm lọc xếp cạnh nhau */
+    .filter-group {
+        flex-wrap: wrap;
+    }
+
+    /* Danh sách task xếp 1 cột */
+    .tasks-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Tiêu đề panel nhỏ lại */
+    .panel-title {
+        font-size: 1.1rem;
+    }
+
+    /* Modal chiếm gần toàn màn hình trên mobile */
+    .modal-content {
+        width: 95%;
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    /* Trong modal, 2 cột chuyển thành 1 cột */
+    .modal-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Nút thêm task không quá to */
+    .panel-header .btn {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+    }
+}

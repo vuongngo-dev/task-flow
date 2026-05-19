@@ -275,3 +275,55 @@ body {
     font-size: 0.8rem; 
     color: var(--text-muted); 
 }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    /* Giảm padding tổng thể */
+    body {
+        padding: 12px;
+    }
+
+    /* Header xếp dọc */
+    .fluent-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .fluent-header h1 {
+        font-size: 1.4rem;
+    }
+
+    /* Grid về 1 cột */
+    .fluent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Panel đồng hồ không span 2 dòng nữa */
+    .timer-panel {
+        grid-row: span 1;
+        min-height: auto;
+        padding: 20px 16px;
+    }
+
+    /* Thu nhỏ vòng tròn đếm ngược trên mobile */
+    .timer-wrapper {
+        width: min(220px, 65vw);
+        height: min(220px, 65vw);
+        margin-bottom: 24px;
+    }
+
+    /* Giảm cỡ chữ đồng hồ */
+    #time-left {
+        font-size: 3rem;
+    }
+
+    /* Tabs mode thu hẹp lại */
+    .fluent-tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+}

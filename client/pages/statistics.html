@@ -118,23 +118,6 @@
         </main>
     </div>
 
-    <script>
-        const grid = document.querySelector('.graph-grid');
-        // Tạo 30 cột (tuần), mỗi cột 7 ô (ngày) để Demo UI
-        for (let i = 0; i < 30; i++) {
-            const week = document.createElement('div');
-            week.className = 'graph-week';
-            for (let j = 0; j < 7; j++) {
-                const day = document.createElement('div');
-                day.className = 'graph-day';
-                // Random mức độ đóng góp từ 0 đến 4
-                const level = Math.floor(Math.random() * 5); 
-                day.setAttribute('data-level', level);
-                day.title = `${Math.floor(Math.random() * 10)} task completed`;
-                week.appendChild(day);
-            }
-            grid.appendChild(week);
-        }
-    </script>
+    <script src="../scripts/statistics.js"></script>
 </body>
 </html>
