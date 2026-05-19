@@ -15,7 +15,7 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
     padding: 40px 20px;
     gap: 40px;
     position: relative;
-    color: #334155;
+    color: var(--text-main);
 }
 
 /* --- THANH MỤC LỤC CHÍNH --- */
@@ -57,7 +57,7 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
     align-items: center;
     gap: 10px;
     padding: 10px 14px;
-    color: #64748b;
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
@@ -69,12 +69,12 @@ DESCRIPTION: Styles cho trang hướng dẫn sử dụng.
     text-align: center;
 }
 .tf-link:hover {
-    color: #3b82f6;
-    background-color: #f1f5f9;
+    color: var(--primary);
+    background-color: var(--bg-hover);
 }
 .tf-link.active {
-    color: #3b82f6;
-    background-color: #eff6ff;
+    color: var(--primary);
+    background-color: var(--bg-active);
     font-weight: 600;
 }
 
@@ -151,11 +151,11 @@ code {
     left: 30px; /* Đổi từ right sang left */
     width: 50px;
     height: 50px;
-    background-color: #3b82f6;
-    color: white;
+    background-color: var(--primary);
+    color: var(--text-main);
     border: none;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: var(--shadow-md);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -166,7 +166,7 @@ code {
 }
 
 .tf-toggle-btn:hover {
-    background-color: #2563eb;
+    background-color: var(--primary-hover);
     transform: scale(1.05);
 }
 
@@ -177,7 +177,7 @@ code {
     right: 15px; /* Ghim ở góc trên cùng bên phải của hộp mục lục */
     width: 28px;
     height: 28px;
-    background-color: #ffffff;
+    background-color: var(--bg-body);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
     border-radius: 6px;
@@ -192,7 +192,7 @@ code {
 .sidebar-close-btn:hover {
     background-color: var(--danger-light);
     color: var(--error); /* Đổi màu đỏ nhẹ khi di chuột vào nút đóng */
-    border-color: #cbd5e1;
+    border-color: var(--border-color);
 }
 
 /* --- RESPONSIVE CHO ĐIỆN THOẠI & TABLET (<= 992px) --- */
